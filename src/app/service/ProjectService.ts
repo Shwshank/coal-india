@@ -86,6 +86,12 @@ export class ProjectService {
     // });
     this.updateTracker();
   }
+
+  updateContract(data) {
+    this.APIService.UpdateContract(data).subscribe((res)=>{
+      console.log(res);
+    });
+  }
 }
 
 // 	ECT	INDUSTRIES LTD.	MAHAN  		8/8/2017	2469.0075	8/18/2017	Rail	 	Auction	 	10/13/2016	 	WHARFWALL

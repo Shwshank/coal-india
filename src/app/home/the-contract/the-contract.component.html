@@ -1,5 +1,19 @@
-<div class="container"  style=" overflow-x:auto;">
-  <h2>Contract</h2>
+<div *ngIf='display' class="container"  style=" overflow-x:auto;">
+
+
+  <div class="row " style="padding:30px" >
+    <div class=" col-md-4 text-left">
+      <h2 style="margin-bottom:0px; ">Contract</h2>
+      <p style="color:grey"> <i> last updated : 12/12/17 track</i></p>
+    </div>
+    <div class=" col-md-8 text-right">
+
+      <div class="fileinput fileinput-new" data-provides="fileinput" >
+          <span class="btn  btn-file"><span>Updated contract : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
+      </div>
+    </div>
+
+  </div>
 
   <table class="table-striped  table-responsive  " id="example" cellspacing="0" width="100%">
     <thead>
@@ -49,7 +63,7 @@
         <td>{{track.d2 }}</td>
         <td>{{track.d3}}</td>
         <td class="">
-          <input type="text" name=""  [(ngModel)]='track.d15' value={{track.d15}}>
+          <input type="text" name=""  [(ngModel)]='track.d15' value={{track.d15}}  style="width:50px !important">
         </td>
         <td>{{track.d4}}</td>
         <td>{{parseint(track.d5/track.d15)}} </td>
