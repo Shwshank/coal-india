@@ -16,43 +16,49 @@
   </div>
 
   <table class="table-striped  table-responsive  " id="example" cellspacing="0" width="100%">
-    <thead>
+    <thead  style="background-color:#dcefff">
       <tr>
-        <th>Sno.</th>
+        <th>S.no.</th>
         <th>Subsidiary</th>
-        <th>Customer Name</th>
-        <th>UNIT/PLANT</th>
-        <th>Days</th>
-        <th>Contract Signing Date</th>
-        <th>Remaining Volume (Metric Tonne)</th>
-        <th>Enforcement Date </th>
+        <th>Location</th>
         <th>Primary Mode</th>
         <th>Secondary Mode</th>
+        <th>Customer Name</th>
+        <th>Unit/Plant</th>
+        <th>Days</th>
+        <th>Annual QTY</th>
+        <th>Contract Signing Date</th>
+        <th>Remaining Volume (Metric Tonne)</th>
+        <th>Enforcement Date</th>
         <th>Auction type</th>
         <th>FSA Number</th>
         <th>FSA Date</th>
-        <th>Primay Location</th>
-        <th>Secondary Location</th>
+        <th>Commencement Status</th>
+        <th>ANNEXURE-III</th>
+
 
       </tr>
     </thead>
     <tfoot>
      <tr>
-       <th>Sno.</th>
+       <th>S.no.</th>
        <th>Subsidiary</th>
-       <th>Customer Name</th>
-       <th>UNIT/PLANT</th>
-       <th>Days</th>
-       <th>Contract Signing Date</th>
-       <th>Remaining Volume (Metric Tonne)</th>
-       <th>Enforcement Date </th>
+       <th>Location</th>
        <th>Primary Mode</th>
        <th>Secondary Mode</th>
+       <th>Customer Name</th>
+       <th>Unit/Plant</th>
+       <th>Days</th>
+       <th>Annual QTY</th>
+       <th>Contract Signing Date</th>
+       <th>Remaining Volume (Metric Tonne)</th>
+       <th>Enforcement Date</th>
        <th>Auction type</th>
        <th>FSA Number</th>
        <th>FSA Date</th>
-       <th>Primay Location</th>
-       <th>Secondary Location</th>
+       <th>Commencement Status</th>
+       <th>ANNEXURE-III</th>
+
      </tr>
  </tfoot>
     <tbody>
@@ -62,19 +68,21 @@
         <td>{{track.d1}}</td>
         <td>{{track.d2 }}</td>
         <td>{{track.d3}}</td>
-        <td class="">
-          <input type="text" name=""  [(ngModel)]='track.d15' value={{track.d15}}  style="width:50px !important">
-        </td>
         <td>{{track.d4}}</td>
-        <td>{{parseint(track.d5/track.d15)}} </td>
+        <td>{{track.d5}}</td>
         <td>{{track.d6}}</td>
-        <td>{{track.d7}}</td>
+        <td class="">
+          <input type="text" name=""  [(ngModel)]='track.d16' value={{track.d16}}  style="width:50px !important">
+        </td>
+        <td>{{parseint(track.d7/track.d16)}} </td>
         <td>{{track.d8}}</td>
         <td>{{track.d9}}</td>
         <td>{{track.d10}}</td>
         <td>{{track.d11}}</td>
         <td>{{track.d12}}</td>
         <td>{{track.d13}}</td>
+        <td>{{track.d14}}</td>
+        <td>{{track.d15}}</td>
 
       </tr>
 

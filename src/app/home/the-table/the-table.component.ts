@@ -31,7 +31,12 @@ export class TheTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ProjectService.updateTracker();
+    let d = new Date();
+    let m = d.getMonth();
+    m += 1;
+    let y = d.getFullYear();
+    console.log(y+'-'+m);
+    // this.ProjectService.updateTracker();
   }
   ngOnDestroy() {
     localStorage.setItem('trackerFlag','0');
@@ -47,7 +52,7 @@ export class TheTableComponent implements OnInit {
     let formData = new FormData();
     formData.append('date1',this.date1);
     formData.append('date2',this.date2);
-    console.log('emited');
-    this.ProjectService.getContractByDate(formData);
+    console.log(this.date2);
+    //this.ProjectService.getContractByDate(formData);
   }
 }

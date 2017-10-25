@@ -21,21 +21,28 @@ export class TheContractComponent implements OnInit {
   constructor(private ProjectService: ProjectService) {
     this.contractFlag = localStorage.getItem('contractFlag');
 
+
     if(this.contractFlag === '0'){
       window.location.reload();
       localStorage.setItem('contractFlag','1');
     } else {
+
+      let temp = localStorage.getItem('contracts');
+      temp = JSON.parse(temp);
+      this.tracker = temp;
       this.display = true;
+
       this.ProjectService.emitTrackerData.subscribe((res) =>{
-        this.tracker = res;
-        console.log(this.tracker);
+        console.log(res);
+        localStorage.setItem('contracts',JSON.stringify(res));
       });
 
     }
   }
 
   ngOnInit() {
-    this.ProjectService.updateTracker();
+    // this.ProjectService.updateTracker();
+    this.ProjectService.getContract(1);
   }
 
   ngOnDestroy() {

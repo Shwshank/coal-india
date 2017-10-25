@@ -1,3 +1,107 @@
-<p>
-  the-upload works!
-</p>
+<div class="container"  style=" overflow-x:auto;overflow-y:hidden">
+
+  <div class="row " style="padding:30px" >
+
+    <div class=" col-md-6 text-left">
+      <h2 style="margin-bottom:0px; ">Uploads</h2>
+    </div>
+    <div class="col-md-6 ">
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center" style="padding:30px" >
+
+    <div class=" col-md-6 text-center" style="min-width: 200px; padding:20px;">
+      <span class="text-center" style="font-size:2rem">
+        <i class="fa fa-file-text-o fa-5x"></i>
+      </span> <br><br>
+      <div class="fileinput fileinput-new" data-provides="fileinput" >
+          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated contract : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-center"  style="min-width: 200px; padding:20px;">
+      <span class=""  style="font-size:2rem">
+        <i class="fa fa-line-chart fa-5x"></i>
+      </span><br><br>
+      <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%">
+          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated daily entry : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row justify-content-md-center" style="padding:30px" >
+
+    <div class=" col-md-6 text-center">
+      <div class="card">
+        <div class="card-header">
+          <h5>Contract Tracker</h5>
+        </div>
+        <div class="card-block text-center" style="height: 350px; overflow-y:auto" >
+
+          <table class="table-striped table-hover" width="100%" cellpadding="0" cellspacing="0" >
+            <thead  style="background-color:#dcefff">
+              <tr>
+                <th  class="text-center">S.no.</th>
+                <th  class="text-center">File name</th>
+                <th  class="text-center">Uploader</th>
+                <th  class="text-center">Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>Contract.csv</td>
+                <td>Tom Eleven</td>
+                <td style="color:#0275d8"> <i class="fa fa-download" aria-hidden="true"></i> </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <div class="card">
+        <div class="card-header">
+          <h5>Daly Entry Tracker</h5>
+        </div>
+        <div class="card-block" style="height: 350px; overflow-y:auto" >
+
+          <table class="table-striped table-hover" width="100%" cellpadding="0" cellspacing="0" >
+            <thead  style="background-color:#dcefff">
+              <tr>
+                <th  class="text-center">S.no.</th>
+                <th  class="text-center">File name</th>
+                <th  class="text-center">Uploader</th>
+                <th  class="text-center">Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>Contract.csv</td>
+                <td>Tom Eleven</td>
+                <td style="color:#0275d8"> <i class="fa fa-download" aria-hidden="true"></i> </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div style="padding-bottom:50px;">
+  </div>
+
+</div>

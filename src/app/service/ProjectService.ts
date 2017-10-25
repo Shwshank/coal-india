@@ -80,11 +80,12 @@ export class ProjectService {
     this.tracker(this.trackerData);
   }
 
-  getContractByDate(data) {
-    // this.APIService.GetUpdateContact(data).subscribe((res)=>{
-    //   console.log(res);
-    // });
-    this.updateTracker();
+  getContract(data) {
+    this.APIService.GetUpdatedContract(data).subscribe((res)=>{
+      console.log(res.contracts_data);
+      this.tracker(res.contracts_data);
+    });
+    // this.updateTracker();
   }
 
   updateContract(data) {

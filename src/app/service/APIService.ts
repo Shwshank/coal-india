@@ -12,10 +12,13 @@ export class APIService {
     let uid = localStorage.getItem('uid');
     return this.http.post(this.projectURL+'/adduser', '{"upid": "'+uid+'", "fname" : "'+fname+'", "lname" : "'+lname+'", "email": "'+email+'" , "addp": '+addp+', "addsp": '+addsp+', "viewp": '+viewp+', "editp":'+editp+', "deletep": '+deletep+', "createnu": '+createnu+', "assignu": '+assignu+'}');
   }
+  GetUpdatedContract(data) {
+    return this.http.get(this.projectURL+'/getallcontractsdata').map(res=>res.json());
+  }
 
   UpdateContract(data) {
     console.log(data);
     return this.http.post(this.projectURL+'/uploaddailyentry',data).map(res=>res.json());
-    
+
   }
 }
