@@ -1,11 +1,22 @@
 import { EventEmitter, Injectable, } from '@angular/core';
 import { APIService } from './APIService';
+import { NgForm } from '@angular/forms';
 
 @Injectable()
 export class ProjectService {
 
-  constructor(private APIService: APIService,) {}
+  month : any = '2017-10';
 
+  constructor(private APIService: APIService,) {
+    let d = new Date();
+    let m = d.getMonth();
+    m += 1;
+    let y = d.getFullYear();
+    this.month = y+'-'+m;
+  }
+
+  emitToastMsg :  EventEmitter<any> = new EventEmitter<any>();
+  emitContractData :  EventEmitter<any> = new EventEmitter<any>();
   emitTrackerData :  EventEmitter<any> = new EventEmitter<any>();
 
   trackerData: any = [{'d1':'ECT', 'd2':'ADANI POWER LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'2412369', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
@@ -72,27 +83,51 @@ export class ProjectService {
 
                     ] ;
 
+  toast(msg1, msg2) {
+    this.emitToastMsg.emit({'msg1': msg1, 'msg2': msg2});
+  }
+
+  contract(data) {
+    this.emitContractData.emit(data);
+  }
+
   tracker(data) {
     this.emitTrackerData.emit(data);
   }
 
-  updateTracker() {
-    this.tracker(this.trackerData);
-  }
-
   getContract(data) {
     this.APIService.GetUpdatedContract(data).subscribe((res)=>{
-      console.log(res.contracts_data);
-      this.tracker(res.contracts_data);
+      // console.log(res.contracts_data);
+      this.contract(res.contracts_data);
     });
-    // this.updateTracker();
   }
 
   updateContract(data) {
     this.APIService.UpdateContract(data).subscribe((res)=>{
-      console.log(res);
+      // console.log(res);
+      
+      // update contract
+      this.getContract(1);
     });
   }
-}
 
-// 	ECT	INDUSTRIES LTD.	MAHAN  		8/8/2017	2469.0075	8/18/2017	Rail	 	Auction	 	10/13/2016	 	WHARFWALL
+  updateTracker(data) {
+    this.APIService.UpdateTracker(data).subscribe((res)=>{
+      // console.log(res);
+
+      // update Daily tracker data data
+      let formData = new FormData();
+      formData.append('monthdate', this.month);
+      this.getTrackerByDate(formData);
+    });
+  }
+
+  getTrackerByDate(data) {
+    this.APIService.GetTrackerByDate(data).subscribe((res)=>{
+      // console.log(res.data);
+      this.tracker(res.data);
+
+    });
+
+  }
+}

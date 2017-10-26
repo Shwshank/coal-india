@@ -8,9 +8,9 @@
     </div>
     <div class=" col-md-8 text-right">
 
-      <div class="fileinput fileinput-new" data-provides="fileinput" >
+      <!-- <div class="fileinput fileinput-new" data-provides="fileinput" >
           <span class="btn  btn-file"><span>Updated contract : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -20,7 +20,8 @@
       <tr>
         <th>S.no.</th>
         <th>Subsidiary</th>
-        <th>Location</th>
+        <th>Primary Location</th>
+        <th>Secondary Location</th>
         <th>Primary Mode</th>
         <th>Secondary Mode</th>
         <th>Customer Name</th>
@@ -42,7 +43,8 @@
      <tr>
        <th>S.no.</th>
        <th>Subsidiary</th>
-       <th>Location</th>
+       <th>Primary Location</th>
+       <th>Secondary Location</th>
        <th>Primary Mode</th>
        <th>Secondary Mode</th>
        <th>Customer Name</th>
@@ -65,7 +67,8 @@
       <tr *ngFor="let track of tracker  ;  let i = index ">
         <td>{{i + 1}}.</td>
         <td>{{track.d1}}</td>
-        <td>{{track.d2 }}</td>
+        <td>{{track.d2}}</td>
+        <td>{{track.d18}}</td>
         <td>{{track.d3}}</td>
         <td>{{track.d4}}</td>
         <td>{{track.d5}}</td>

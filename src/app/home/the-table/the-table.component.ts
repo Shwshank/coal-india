@@ -15,44 +15,57 @@ export class TheTableComponent implements OnInit {
   date2: any;
   trackerFlag: any;
   display = false;
+  formData = new FormData();
+  month: any;
+  searchRefreshflag = false;
 
   constructor(private ProjectService: ProjectService) {
     this.trackerFlag = localStorage.getItem('trackerFlag');
     if(this.trackerFlag == 0) {
       window.location.reload();
       localStorage.setItem('trackerFlag','1');
+
     } else {
+
+      let temp = localStorage.getItem('tracker');
+      temp = JSON.parse(temp);
+      this.tracker = temp;
+      // console.log(this.tracker);
+
       this.display = true;
       this.ProjectService.emitTrackerData.subscribe((res) =>{
-        this.tracker = res;
-        console.log(this.tracker);
+        localStorage.setItem('tracker',JSON.stringify(res));
+        // console.log(res);
+        if(this.searchRefreshflag){
+          window.location.reload();
+        }
+
       });
     }
   }
 
   ngOnInit() {
-    let d = new Date();
-    let m = d.getMonth();
-    m += 1;
-    let y = d.getFullYear();
-    console.log(y+'-'+m);
-    // this.ProjectService.updateTracker();
+
   }
+
   ngOnDestroy() {
     localStorage.setItem('trackerFlag','0');
   }
 
   parseint(data) {
+    // console.log(data);
     data = parseInt(data);
     data = +data || 0;
     return data;
   }
 
   searchByDate() {
-    let formData = new FormData();
-    formData.append('date1',this.date1);
-    formData.append('date2',this.date2);
-    console.log(this.date2);
+    let formData1 = new FormData();
+    this.month = this.date2
+    formData1.append('monthdate', this.month);
+    // console.log(this.date2);
+    this.ProjectService.getTrackerByDate(formData1);
     //this.ProjectService.getContractByDate(formData);
+    this.searchRefreshflag = true;
   }
 }

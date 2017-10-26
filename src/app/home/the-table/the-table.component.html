@@ -1,6 +1,7 @@
 <div *ngIf='display' class="container"  style=" overflow-x:auto;overflow-y:hidden">
   <h2>Tracker</h2>
-
+  <p style="color:grey"> <i> last updated : 12/12/17 track</i></p>
+  <br>
   <div class="card" >
     <div class="card-header">
 
@@ -45,12 +46,16 @@
       <tr>
         <th>Sno.</th>
         <th>Subsidiary</th>
-        <th>Location</th>
-        <th>Mode</th>
+        <th>Primary Location</th>
+        <th>Secondary Location</th>
+        <th>Primary Mode</th>
+        <th>Secondary Mode</th>
         <th>Customer</th>
         <th>Plant</th>
+        <th>Signing Date</th>
         <th>Days</th>
-        <th>Cost</th>
+        <th>Annual Qty. </th>
+        <th>Remaining Vol. </th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -90,12 +95,16 @@
      <tr>
        <th>Sno.</th>
        <th>Subsidiary</th>
-       <th>Location</th>
-       <th>Mode</th>
+       <th>Primary Location</th>
+       <th>Secondary Location</th>
+       <th>Primary Mode</th>
+       <th>Secondary Mode</th>
        <th>Customer</th>
        <th>Plant</th>
+       <th>Signing Date</th>
        <th>Days</th>
-       <th>Cost</th>
+       <th>Annual Qty. </th>
+       <th>Remaining Vol. </th>
        <th>1</th>
        <th>2</th>
        <th>3</th>
@@ -127,32 +136,61 @@
        <th>29</th>
        <th>30</th>
        <th>31</th>
-
      </tr>
  </tfoot>
-    <!-- <tbody>
+    <tbody>
 
       <tr *ngFor="let track of tracker  ;  let i = index ">
         <td>{{i + 1}}.</td>
         <td>{{track.d1}}</td>
-        <td>{{track.d2 }}</td>
+        <td>{{track.d2}}</td>
+        <td>{{track.d11}}</td>
         <td>{{track.d3}}</td>
-        <td class="">
-          <input type="text" name=""  [(ngModel)]='track.d15' value={{track.d15}}>
-        </td>
         <td>{{track.d4}}</td>
-        <td>{{parseint(track.d5/track.d15)}} </td>
+        <td>{{track.d5}}</td>
         <td>{{track.d6}}</td>
         <td>{{track.d7}}</td>
-        <td>{{track.d8}}</td>
-        <td>{{track.d9}}</td>
+        <td class="">
+          <input type="text" name=""  [(ngModel)]='track.d8' value={{track.d8}}>
+        </td>
+        <!-- <td>{{parseint(track.d9/track.d8)}} </td> -->
+        <td>{{parseint(track.d9/track.d8)}}</td>
         <td>{{track.d10}}</td>
-        <td>{{track.d11}}</td>
-        <td>{{track.d12}}</td>
-        <td>{{track.d13}}</td>
+        <td>{{track.d1d}}</td>
+        <td>{{track.d2d}}</td>
+        <td>{{track.d3d}}</td>
+        <td>{{track.d4d}}</td>
+        <td>{{track.d5d}}</td>
+        <td>{{track.d6d}}</td>
+        <td>{{track.d7d}}</td>
+        <td>{{track.d8d}}</td>
+        <td>{{track.d9d}}</td>
+        <td>{{track.d10d}}</td>
+        <td>{{track.d11d}}</td>
+        <td>{{track.d12d}}</td>
+        <td>{{track.d13d}}</td>
+        <td>{{track.d14d}}</td>
+        <td>{{track.d15d}}</td>
+        <td>{{track.d16d}}</td>
+        <td>{{track.d17d}}</td>
+        <td>{{track.d18d}}</td>
+        <td>{{track.d19d}}</td>
+        <td>{{track.d20d}}</td>
+        <td>{{track.d21d}}</td>
+        <td>{{track.d22d}}</td>
+        <td>{{track.d23d}}</td>
+        <td>{{track.d24d}}</td>
+        <td>{{track.d25d}}</td>
+        <td>{{track.d26d}}</td>
+        <td>{{track.d27d}}</td>
+        <td>{{track.d28d}}</td>
+        <td>{{track.d29d}}</td>
+        <td>{{track.d30d}}</td>
+        <td>{{track.d31d}}</td>
+
 
       </tr>
 
-    </tbody> -->
+    </tbody>
   </table>
 </div>

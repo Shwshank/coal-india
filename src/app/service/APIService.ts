@@ -4,7 +4,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable()
 export class APIService {
 
-  projectURL: string = 'http://192.168.15.221:8000';
+  // projectURL: string = 'http://192.168.15.221:8000';
+  projectURL: string = 'http://qcitech.org:8081';
 
   constructor( private http: Http, ) {}
 
@@ -16,9 +17,20 @@ export class APIService {
     return this.http.get(this.projectURL+'/getallcontractsdata').map(res=>res.json());
   }
 
-  UpdateContract(data) {
-    console.log(data);
-    return this.http.post(this.projectURL+'/uploaddailyentry',data).map(res=>res.json());
-
+  GetTrackerByDate(data) {
+    // console.log(data);
+    return this.http.post(this.projectURL+'/getallcontractsmonthdata',data).map(res=>res.json());
   }
+
+  UpdateContract(data) {
+    // console.log(data);
+    return this.http.post(this.projectURL+'/uploadcontracts',data);
+  }
+
+  UpdateTracker(data) {
+    // console.log(data);
+    return this.http.post(this.projectURL+'/uploaddailyentry',data);
+  }
+
+
 }

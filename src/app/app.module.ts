@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -28,6 +31,8 @@ import { TheUploadComponent } from './home/the-upload/the-upload.component';
     TheUploadComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     FormsModule,
     BrowserModule,
     HttpModule,

@@ -16,7 +16,7 @@
         <i class="fa fa-file-text-o fa-5x"></i>
       </span> <br><br>
       <div class="fileinput fileinput-new" data-provides="fileinput" >
-          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated contract : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
+          <span class="btn  btn-file btn-primary" style="width:100% !important"><span>Updated contract : </span><input type="file" (change)="updateContract($event);" accept=".csv"/></span>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
         <i class="fa fa-line-chart fa-5x"></i>
       </span><br><br>
       <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%">
-          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated daily entry : </span><input type="file" (change)="updated($event);" accept=".csv"/></span>
+          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated daily entry : </span><input type="file"(change)="updateTracker($event);"  accept=".csv"/></span>
       </div>
     </div>
 
