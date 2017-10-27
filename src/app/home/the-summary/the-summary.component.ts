@@ -11,10 +11,10 @@ export class TheSummaryComponent implements OnInit {
   constructor(private router: Router, ) {}
 
   ngOnInit() {
-    
   }
 
   psuSummary(id) {
+    console.log(id);
     this.router.navigate(['home/summary/psusummary'],
         {queryParams: {psu_id: id}});
   }
