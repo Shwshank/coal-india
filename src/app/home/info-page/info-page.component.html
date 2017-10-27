@@ -21,13 +21,13 @@
 
       <div class="card" style="min-width: 200px; padding:10px">
         <span class="text-center" style="font-size:2rem">
-          <i class="fa fa-file-text-o fa-5x"></i>
+          <i class="fa fa-pie-chart fa-5x" aria-hidden="true"></i>
         </span>
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-block">
-          <h4 class="card-title">Contract</h4>
-          <p class="card-text">View and upload contracts details of the PSUs and customers</p>
-          <a [routerLink]="['/home/contract']" class="btn btn-primary">View Contracts</a>
+          <h4 class="card-title">PSU Details</h4>
+          <p class="card-text">Graphical details of the PSU and associated data</p>
+          <a [routerLink]="['/home/contract']" class="btn btn-primary">View Details</a>
         </div>
       </div>
 
@@ -61,7 +61,24 @@
           <a [routerLink]="['/home/tracker']" class="btn btn-primary">View Tracker</a>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-4 col-sm-12" style="padding:10px">
+
+      <div class="card" style="min-width: 200px; padding:10px">
+        <span class="text-center" style="font-size:2rem">
+          <i class="fa fa-file-text-o fa-5x"></i>
+        </span>
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-block">
+          <h4 class="card-title">Contract</h4>
+          <p class="card-text">View and upload contracts details of the PSUs and customers</p>
+          <a [routerLink]="['/home/contract']" class="btn btn-primary">View Contracts</a>
+        </div>
+      </div>
 
     </div>
+
+
   </div>
 </div>

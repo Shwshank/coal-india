@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {ToastOptions} from 'ng2-toastr';
+import { CustomOption } from './ng2-toastr-custom-option';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -19,7 +21,8 @@ import { NgPipesModule } from 'ngx-pipes';
 import { TheContractComponent } from './home/the-contract/the-contract.component';
 import { InfoPageComponent } from './home/info-page/info-page.component';
 import { TheUploadComponent } from './home/the-upload/the-upload.component';
-
+import { TheSummaryComponent } from './home/the-summary/the-summary.component';
+import { SummaryContentComponent } from './home/the-summary/summary-content/summary-content.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { TheUploadComponent } from './home/the-upload/the-upload.component';
     TheContractComponent,
     InfoPageComponent,
     TheUploadComponent,
+    TheSummaryComponent,
+    SummaryContentComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -39,7 +44,11 @@ import { TheUploadComponent } from './home/the-upload/the-upload.component';
     NgPipesModule,
     RouterModule.forRoot(routes, { useHash: true })  // .../#/crisis-center/
   ],
-  providers: [APIService, ProjectService],
+  providers: [
+    APIService,
+    ProjectService,
+    {provide: ToastOptions, useClass: CustomOption},
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

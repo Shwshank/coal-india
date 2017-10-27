@@ -10,6 +10,7 @@ import { ViewContainerRef } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   formData = new FormData();
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    // this.showSuccess('1','1');
     // Get Contract api
     this.ProjectService.getContract(1);
 
@@ -59,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   showSuccess(msg1, msg2) {
-    this.toastr.success('You are awesome!', 'Success!');
+    this.toastr.info('You are awesome!', 'Success!', {enableHTML: true});
   }
 
 }
