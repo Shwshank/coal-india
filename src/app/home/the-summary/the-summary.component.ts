@@ -11,6 +11,7 @@ export class TheSummaryComponent implements OnInit {
   constructor(private router: Router, ) {}
 
   ngOnInit() {
+    
   }
 
   psuSummary(id) {
