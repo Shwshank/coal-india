@@ -1,3 +1,84 @@
-<p>
-  summary-content works!
-</p>
+<div class="container" >
+
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="row justify-content-md-center" >
+
+      <div class="col-md-6 height400" >
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse"  href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Volume signed v/s lifted
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              <app-sm1></app-sm1>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 height400" >
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Results desclared v/s challanged
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block">
+              <app-sm2></app-sm2>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 height400" >
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse"  href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Total contracts
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+              <app-sm3></app-sm3>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 height400" >
+        <div class="card">
+          <div class="card-header" role="tab" id="headingFour">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse"  href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                SLA Break
+              </a>
+            </h5>
+          </div>
+          <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingFour">
+            <div class="card-block">
+              <app-sm4></app-sm4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

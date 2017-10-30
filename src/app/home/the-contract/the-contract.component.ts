@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../service/ProjectService';
 import { NgForm } from '@angular/forms';
 import {NgPipesModule} from 'ngx-pipes';
-import './allscript.js';
+// import './allscript.js';
 
 @Component({
   selector: 'app-the-contract',

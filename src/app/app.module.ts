@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {ToastOptions} from 'ng2-toastr';
 import { CustomOption } from './ng2-toastr-custom-option';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -23,6 +24,12 @@ import { InfoPageComponent } from './home/info-page/info-page.component';
 import { TheUploadComponent } from './home/the-upload/the-upload.component';
 import { TheSummaryComponent } from './home/the-summary/the-summary.component';
 import { SummaryContentComponent } from './home/the-summary/summary-content/summary-content.component';
+import { Sm1Component } from './home/the-summary/summary-content/sm1/sm1.component';
+import { Sm2Component } from './home/the-summary/summary-content/sm2/sm2.component';
+import { Sm3Component } from './home/the-summary/summary-content/sm3/sm3.component';
+import { Sm4Component } from './home/the-summary/summary-content/sm4/sm4.component';
+import { Sm5Component } from './home/the-summary/summary-content/sm5/sm5.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +41,13 @@ import { SummaryContentComponent } from './home/the-summary/summary-content/summ
     TheUploadComponent,
     TheSummaryComponent,
     SummaryContentComponent,
+    Sm1Component,
+    Sm2Component,
+    Sm3Component,
+    Sm4Component,
+    Sm5Component,
+    LoginComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,6 +56,7 @@ import { SummaryContentComponent } from './home/the-summary/summary-content/summ
     BrowserModule,
     HttpModule,
     NgPipesModule,
+    Ng2SmartTableModule,
     RouterModule.forRoot(routes, { useHash: true })  // .../#/crisis-center/
   ],
   providers: [
