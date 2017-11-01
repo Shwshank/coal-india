@@ -16,17 +16,34 @@ export class Sm4Component implements OnInit {
   myChart: any;
   data1 :any;
   data2 :any;
-  data3 :any;
+  data3 : any;
+  data4 : any;
+  data5 : any;
+  data6 : any;
+  data7 : any;
+  label1: any;
+  label2: any;
+  label3: any;
+  label4: any;
+  label5: any;
+  display = false;
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitPSUData.subscribe((res)=>{
-      console.log(res.data);
-      this.data1 = res.data[res.id].vol.total;
-      this.data2 = res.data[res.id].vol.lifted;
-      this.data3 = res.data[res.id].vol.remaining;
-      if(this.data1 != 0){
+      // console.log(res.data);
+      this.data1 = res.data[res.id].slabreak[0][1];
+      this.data2 = res.data[res.id].slabreak[1][1];
+
+      this.label1 = res.data[res.id].slabreak[0][0];
+      this.label2 = res.data[res.id].slabreak[1][0];
+
+      if(this.data1 == 0){
+        this.display = false;
+      } else {
+        this.display = true;
         this.getGraph();
       }
+
     });
   }
 
@@ -40,9 +57,9 @@ export class Sm4Component implements OnInit {
      this.myChart = new Chart(this.donutCtx, {
         type: 'doughnut',
         data: {
-           labels: this.labels,
+           labels: [this.label1,this.label2],
            datasets: [{
-               data : [this.data2,this.data3],
+               data : [this.data1,this.data2],
                backgroundColor: ['#025AA5','#8e8e8e']
            },
          ]
@@ -50,11 +67,12 @@ export class Sm4Component implements OnInit {
         options: {
              responsive: true,
              legend: {
+                 display: false,
                  position: 'top',
              },
              title: {
                  display: true,
-                 text: 'Signed Amt '+ this.data1,
+                 text: this.label1+' '+ this.data1,
              },
              animation: {
                  animateScale: true,

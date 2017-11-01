@@ -14,6 +14,7 @@ import { ViewContainerRef } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   formData = new FormData();
+  // passwordmsg: any= ' * asd';
 
   constructor(private route: ActivatedRoute, private router: Router,
     private ProjectService: ProjectService, public toastr: ToastsManager, vcr: ViewContainerRef) {
@@ -41,6 +42,15 @@ export class HomeComponent implements OnInit {
     });
     // -------------------------------------------------------ends here
 
+    // Get PUS SummaryContentComponent
+    // ------------------------------------------------------- starts here
+    this.ProjectService.emitSummaryData.subscribe((res) =>{
+      localStorage.setItem('summary',JSON.stringify(res.data));
+      localStorage.setItem('psuidname',JSON.stringify(res.array));
+      // console.log(res);
+    });
+    // ------------------------------------------------------- ends here
+
   }
 
   ngOnInit() {
@@ -58,10 +68,18 @@ export class HomeComponent implements OnInit {
     this.formData.append('monthdate', month);
     this.ProjectService.getTrackerByDate(this.formData);
 
+    // Get PSU Summary
+    this.ProjectService.getPsuSummary(1);
   }
 
   showSuccess(msg1, msg2) {
     this.toastr.info('You are awesome!', 'Success!', {enableHTML: true});
+  }
+
+  logout() {
+    localStorage.setItem('login','');
+    this.router.navigate(['./login']);
+
   }
 
 }

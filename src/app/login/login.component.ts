@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../service/ProjectService';
+import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email : any;
+  password: any;
+
+
+  constructor(private ProjectService: ProjectService, private router: Router) {
+    this.ProjectService.emitUserLogin.subscribe((res)=>{
+      this.router.navigate(['home/']);
+    });
+  }
 
   ngOnInit() {
   }
 
+  login() {
+    let formData = new FormData();
+    formData.append('email',this.email);
+    formData.append('pwd',this.password);
+    this.ProjectService.login(formData);
+
+  }
 }

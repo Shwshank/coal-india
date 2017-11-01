@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-// import { AuthGuard } from './service/AuthGuard';
+import { AuthGuard } from './service/ZauthGuard';
 import { HomeComponent } from './home/home.component';
 import { TheTableComponent } from './home/the-table/the-table.component';
 import { TheContractComponent } from './home/the-contract/the-contract.component';
@@ -20,23 +20,23 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent,
     children: [
-      { path: '', pathMatch: 'full', component: InfoPageComponent,},
-      { path: 'tracker', component: TheTableComponent,},
-      { path: 'contract', component: TheContractComponent,},
-      { path: 'upload', component: TheUploadComponent,},
-      { path: 'summary', component: TheSummaryComponent,
+      { path: '', pathMatch: 'full', component: InfoPageComponent, canActivate: [AuthGuard]},
+      { path: 'tracker', component: TheTableComponent, canActivate: [AuthGuard]},
+      { path: 'contract', component: TheContractComponent, canActivate: [AuthGuard]},
+      { path: 'upload', component: TheUploadComponent, canActivate: [AuthGuard]},
+      { path: 'summary', component: TheSummaryComponent, canActivate: [AuthGuard],
         children: [
           { path: 'psusummary', component: SummaryContentComponent, children: [
-            { path: 'sm1', component: Sm1Component, },
-            { path: 'sm2', component: Sm2Component, },
-            { path: 'sm3', component: Sm3Component, },
-            { path: 'sm4', component: Sm4Component, },
-            { path: 'sm5', component: Sm5Component, },
+            { path: 'sm1', component: Sm1Component, canActivate: [AuthGuard] },
+            { path: 'sm2', component: Sm2Component, canActivate: [AuthGuard] },
+            { path: 'sm3', component: Sm3Component, canActivate: [AuthGuard] },
+            { path: 'sm4', component: Sm4Component, canActivate: [AuthGuard] },
+            { path: 'sm5', component: Sm5Component, canActivate: [AuthGuard] },
           ]
           }
         ]
       },
-      { path: '**', component: InfoPageComponent }
+      { path: '**', component: InfoPageComponent , canActivate: [AuthGuard]}
     ]
   },
   { path: '**', redirectTo:'/login' }

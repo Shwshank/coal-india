@@ -30,7 +30,7 @@ export class TheTableComponent implements OnInit {
       let temp = localStorage.getItem('tracker');
       temp = JSON.parse(temp);
       this.tracker = temp;
-      // console.log(this.tracker);
+      console.log(this.tracker);
       this.display = true;
       this.ProjectService.emitTrackerData.subscribe((res) =>{
         localStorage.setItem('tracker',JSON.stringify(res));
@@ -61,7 +61,7 @@ export class TheTableComponent implements OnInit {
   }
 
   parseint(data) {
-    // console.log(data);
+    console.log(data);
     data = parseInt(data);
     data = +data || 0;
     return data;

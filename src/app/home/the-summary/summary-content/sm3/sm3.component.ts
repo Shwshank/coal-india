@@ -14,19 +14,42 @@ export class Sm3Component implements OnInit {
   @ViewChild('donut') donut: ElementRef;
   donutCtx: any;
   myChart: any;
-  data1 :any;
-  data2 :any;
-  data3 :any;
+  data1 : any;
+  data2 : any;
+  data3 : any;
+  data4 : any;
+  data5 : any;
+  data6 : any;
+  data7 : any;
+  label1: any;
+  label2: any;
+  label3: any;
+  label4: any;
+  label5: any;
+  display= false;
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitPSUData.subscribe((res)=>{
-      console.log(res.data);
-      this.data1 = res.data[res.id].vol.total;
-      this.data2 = res.data[res.id].vol.lifted;
-      this.data3 = res.data[res.id].vol.remaining;
-      if(this.data1 != 0){
+      // console.log(res.data);
+      this.data1 = res.data[res.id].status[0][1];
+      this.data2 = res.data[res.id].status[1][1];
+      this.data3 = res.data[res.id].status[2][1];
+      this.data4 = res.data[res.id].status[3][1];
+      this.data5 = res.data[res.id].status[4][1];
+
+      this.label1 = res.data[res.id].status[0][0];
+      this.label2 = res.data[res.id].status[1][0];
+      this.label3 = res.data[res.id].status[2][0];
+      this.label4 = res.data[res.id].status[3][0];
+      this.label5 = res.data[res.id].status[4][0];
+
+      if(this.data5 == 0){
+        this.display = false;
+      } else {
+        this.display = true;
         this.getGraph();
       }
+
     });
   }
 
@@ -40,21 +63,23 @@ export class Sm3Component implements OnInit {
      this.myChart = new Chart(this.donutCtx, {
         type: 'doughnut',
         data: {
-           labels: this.labels,
+           labels: [this.label1,this.label2,this.label3,this.label4],
            datasets: [{
-               data : [this.data2,this.data3],
-               backgroundColor: ['#025AA5','#8e8e8e']
+               data : [this.data1,this.data2,this.data3,this.data4],
+               backgroundColor: ['#025AA5','#8e8e8e','#cccccc','#5683a9']
            },
          ]
         },
         options: {
              responsive: true,
              legend: {
+                  display: false,
                  position: 'top',
+
              },
              title: {
                  display: true,
-                 text: 'Signed Amt '+ this.data1,
+                 text:  'Total ' +this.label5+' '+ this.data5,
              },
              animation: {
                  animateScale: true,

@@ -8,15 +8,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TheSummaryComponent implements OnInit {
 
-  PSUArray = [
-    {'name':'SECL', 'id':0},
-    {'name':'MCL', 'id':1},
-    {'name':'NCL', 'id':2},
-    {'name':'WCL', 'id':3},
-    {'name':'CCL', 'id':4},];
+  PSUArray : any;
   psu: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    let temp = localStorage.getItem('psuidname');
+    temp = JSON.parse(temp);
+    this.PSUArray = temp;
+  }
 
   ngOnInit() {
   }

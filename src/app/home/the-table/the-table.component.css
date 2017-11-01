@@ -5,5 +5,5 @@ tfoot input {
     }
 
 tfoot {
-    display: table-header-group;
+    display: table-header-group !important;
 }

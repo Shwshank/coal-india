@@ -9,17 +9,27 @@ body{
 // ng2-toster ends here
 
 .set1 {
-  /*text-decoration: underline;
-  -webkit-text-decoration-color: #025AA5;
-  text-decoration-color: #025AA5;*/
   text-align: center;
   border-bottom: 4px solid #025AA5;
   }
 
 .set2 {
-  /*text-decoration: underline;
-  -webkit-text-decoration-color: red;
-  text-decoration-color: red;*/
   text-align: center;
   border-bottom: 4px solid #8e8e8e;
+  }
+.set3 {
+  text-align: center;
+  border-bottom: 4px solid #cccccc;
+  }
+.set4 {
+  text-align: center;
+  border-bottom: 4px solid #5683a9;
+  }
+
+  .opacityZero {
+    opacity: 0;
+  }
+
+  .opacityOne {
+    opacity: 1;
   }

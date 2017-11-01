@@ -1,16 +1,30 @@
 $(document).ready(function() {
-    // Setup - add a text input to each footer cell
+
     $('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input style="width:10px !important" type="text" placeholder="Search '+title+'" />' );
+    } );
+
+
+    var table = $('#example').DataTable({
+
+        scrollX:  true,
+        fixedColumns:   {
+            leftColumns: 4,
+        }
+    });
+
+    $('#example2 tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
 
-    // DataTable
-    var table = $('#example').DataTable({
-      
+
+    var table2 = $('#example2').DataTable({
+
     });
 
-    // Apply the search
+
     table.columns().every( function () {
         var that = this;
 

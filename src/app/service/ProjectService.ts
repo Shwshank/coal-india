@@ -19,81 +19,27 @@ export class ProjectService {
   emitContractData :  EventEmitter<any> = new EventEmitter<any>();
   emitTrackerData :  EventEmitter<any> = new EventEmitter<any>();
   emitPSUData :  EventEmitter<any> = new EventEmitter<any>();
+  emitPSUArray : EventEmitter<any> = new EventEmitter<any>();
+  emitSummaryData : EventEmitter<any> = new EventEmitter<any>();
+  emitUserLogin : EventEmitter<any> = new EventEmitter<any>();
 
-  trackerData: any = [{'d1':'ECT', 'd2':'ADANI POWER LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'2412369', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'WHARFWALL','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'ADANI LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'HINDALKO LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
-                      {'d1':'REW', 'd2':'INDUSTRIES LTD.', 'd3': 'MAHAN','d4':'8/8/2017', 'd5':'123333469', 'd6': '8/18/2017', 'd7': 'Rail', 'd8': '', 'd9':'Auction', 'd10': '',
-                      'd11':'10/13/2016', 'd12':'', 'd13': 'dummy','d14': '', 'd15': '365'},
+  trackerData: any;
+  PSUData: any;
 
-
-                    ] ;
-
-  PSUData: any = [
-    { 'vol': { 'total' : 100, 'lifted': 30,  'remaining': 70 }, 'results': { 'total' : 100, 'lifted': 30,  'remaining': 70 } } ,
-    { 'vol': { 'total' : 200, 'lifted': 80,  'remaining': 120} } ,
-    { 'vol': { 'total' : 200, 'lifted': 180, 'remaining': 20 } } ,
-    { 'vol': { 'total' : 100, 'lifted': 50,  'remaining': 50 } } ,
-    { 'vol': { 'total' : 200, 'lifted': 40,  'remaining': 160} } ,
-  ];
+  login(data) {
+    this.APIService.Login(data).subscribe((res)=>{
+      console.log(res);
+      if(res.success) {
+        localStorage.setItem('login','true');
+        this.emitUserLogin.emit('user');
+      }
+    });
+  }
 
   allPSUData(id) {
-    this.emitPSUData.emit( {'data': this.PSUData, 'id': id} );
+    let data = localStorage.getItem('summary');
+    data = JSON.parse(data);
+    this.emitPSUData.emit( {'data': data, 'id': id} );
   }
 
   toast(msg1, msg2) {
@@ -141,6 +87,15 @@ export class ProjectService {
       this.tracker(res.data);
 
     });
-
   }
+
+  getPsuSummary(data) {
+    this.APIService.GetAllPSUSummary(data).subscribe((res)=>{
+      // console.log(res);
+      this.emitSummaryData.emit(res);
+      this.PSUData = res.data;
+
+    });
+  }
+
 }

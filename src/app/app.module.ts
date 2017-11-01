@@ -12,7 +12,9 @@ import {ToastOptions} from 'ng2-toastr';
 import { CustomOption } from './ng2-toastr-custom-option';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
+import { AuthGuard } from './service/ZauthGuard';
 import { routes } from './app.routes';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TheTableComponent } from './home/the-table/the-table.component';
@@ -57,9 +59,10 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     NgPipesModule,
     Ng2SmartTableModule,
-    RouterModule.forRoot(routes, { useHash: true })  // .../#/crisis-center/
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [
+    AuthGuard,
     APIService,
     ProjectService,
     {provide: ToastOptions, useClass: CustomOption},

@@ -1,4 +1,4 @@
-<div *ngIf='display' class="container"  style=" overflow-x:auto;overflow-y:hidden">
+<div *ngIf='display' class="container-fluid"  style=" overflow-x:auto;overflow-y:hidden">
   <h2>Tracker</h2>
   <p style="color:grey"> <i> last updated : 12/12/17 track</i></p>
   <br>
@@ -25,7 +25,7 @@
 
         <div class="form-group row">
           <label for="example-datetime-local-input" class="col-2 col-form-label text-center">Select month</label>
-          <div class="col-6">
+          <div class="col-4">
             <input class="form-control" type="month" id="example-datetime-local-input"  [(ngModel)]='date2' format="dd/MM/yyyy">
           </div>
           <div class="3">
@@ -41,21 +41,17 @@
   <div style="padding-bottom:50px;">
   </div>
 
-  <table class="table-striped  table-responsive " id="example"   cellspacing="0" width="100%">
+  <table class="stripe row-border order-column" id="example"   cellspacing="0" width="100%">
     <thead  style="background-color:#dcefff">
       <tr>
 
         <th>Subsidiary</th>
-        <th>Primary Location</th>
-        <th>Secondary Location</th>
-        <th>Primary Mode</th>
-        <th>Secondary Mode</th>
-        <th>Customer</th>
-        <th>Plant</th>
-        <th>Signing Date</th>
+        <th>Location</th>
+        <th>Mode - Customer - Plant</th>
+        <th>Total Lifted</th>
         <th>Days</th>
-        <th>Annual Qty. </th>
-        <th>Remaining Vol. </th>
+        <th>Total Remaining</th>
+        <th>Status</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -94,17 +90,13 @@
     <tfoot>
      <tr>
 
-       <th>Subsidiary</th>
-       <th>Primary Location</th>
-       <th>Secondary Location</th>
-       <th>Primary Mode</th>
-       <th>Secondary Mode</th>
-       <th>Customer</th>
-       <th>Plant</th>
-       <th>Signing Date</th>
-       <th>Days</th>
-       <th>Annual Qty. </th>
-       <th>Remaining Vol. </th>
+       <th style="opacity:0;  cursor:default;">Subsidiary</th>
+       <th style="opacity:0;  cursor:default;">Location</th>
+       <th style="opacity:0;  cursor:default;">Mode - Customer - Plant</th>
+       <th style="opacity:0;  cursor:default;">Total Lifted</th>
+       <th style="opacity:0;  cursor:default;">Days</th>
+       <th style="opacity:0;  cursor:default;">Total Remaining</th>
+       <th style="opacity:0;  cursor:default;">Status</th>
        <th style="opacity:0;  cursor:default;">1</th>
        <th style="opacity:0;  cursor:default;">2</th>
        <th style="opacity:0;  cursor:default;">3</th>
@@ -144,18 +136,13 @@
 
         <td>{{track.d1}}</td>
         <td>{{track.d2}}</td>
-        <td>{{track.d11}}</td>
         <td>{{track.d3}}</td>
-        <td>{{track.d4}}</td>
-        <td>{{track.d5}}</td>
-        <td>{{track.d6}}</td>
-        <td>{{track.d7}}</td>
+        <td>{{track.lifted}}</td>
         <td class="">
-          <input type="text" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
+          <input style="width: 28px" type="text" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
         </td>
-        <!-- <td>{{parseint(track.d9/track.d8)}} </td> -->
-        <td>{{parseint(track.d9/track.d8)}}</td>
-        <td>{{track.d10}}</td>
+        <td>{{parseint(track.needed/track.d8)}}</td>
+        <td>{{track.status}}</td>
         <td>{{track.d1d}}</td>
         <td>{{track.d2d}}</td>
         <td>{{track.d3d}}</td>

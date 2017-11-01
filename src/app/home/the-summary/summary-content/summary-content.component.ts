@@ -17,7 +17,7 @@ export class SummaryContentComponent implements OnInit {
     let sub = this.route.queryParams
       .subscribe(params => {
           this.psu_id = params.psu_id;
-          console.log(this.psu_id);
+          // console.log(this.psu_id);
           this.ProjectService.allPSUData(this.psu_id);
       });
 

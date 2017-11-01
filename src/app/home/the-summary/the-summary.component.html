@@ -10,7 +10,7 @@
           Select subsidiary
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="padding-right:2px !important">
-          <a *ngFor='let psu of PSUArray' class="dropdown-item"  (click)="psuSummary(psu.id, psu.name)">{{psu.name}}</a>
+          <a *ngFor='let psu of PSUArray' class="dropdown-item"  (click)="psuSummary(psu._id, psu.name)">{{psu.name}}</a>
           <!-- <a class="dropdown-item"  (click)="psuSummary('1')">SECL</a>
           <a class="dropdown-item"  (click)="psuSummary('2')">MCL</a>
           <a class="dropdown-item"  (click)="psuSummary('3')">NCL</a>

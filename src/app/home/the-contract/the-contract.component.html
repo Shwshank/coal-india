@@ -1,4 +1,4 @@
-<div *ngIf='display' class="container"  style=" overflow-x:auto;">
+<div *ngIf='display' class="container-fluid"  style=" overflow-x:auto;">
 
 
   <div class="row " style="padding:30px" >
@@ -15,7 +15,7 @@
 
   </div>
 
-  <table class="table-striped  table-responsive  " id="example" cellspacing="0" width="100%">
+  <table class="stripe row-border order-column  " id="example2" cellspacing="0" width="100%">
     <thead  style="background-color:#dcefff">
       <tr>
 
@@ -26,9 +26,9 @@
         <th>Secondary Mode</th>
         <th>Customer Name</th>
         <th>Unit/Plant</th>
-        <th>Days</th>
         <th>Annual QTY</th>
         <th>Contract Signing Date</th>
+        <th>Days</th>
         <th>Remaining Volume (Metric Tonne)</th>
         <th>Enforcement Date</th>
         <th>Auction type</th>
@@ -49,9 +49,9 @@
        <th>Secondary Mode</th>
        <th>Customer Name</th>
        <th>Unit/Plant</th>
-       <th style="opacity:0">Days</th>
        <th>Annual QTY</th>
        <th>Contract Signing Date</th>
+       <th style="opacity:0">Days</th>
        <th>Remaining Volume (Metric Tonne)</th>
        <th>Enforcement Date</th>
        <th>Auction type</th>
@@ -73,12 +73,12 @@
         <td>{{track.d4}}</td>
         <td>{{track.d5}}</td>
         <td>{{track.d6}}</td>
+        <td>{{track.d7}}</td>
+        <td>{{track.d8}}</td>
         <td class="">
           <input type="text" name=""  [(ngModel)]='track.d16' value={{track.d16}}  style="width:50px !important">
         </td>
-        <td>{{parseint(track.d7/track.d16)}} </td>
-        <td>{{track.d8}}</td>
-        <td>{{track.d9}}</td>
+        <td>{{parseint(track.d9/track.d16)}}</td>
         <td>{{track.d10}}</td>
         <td>{{track.d11}}</td>
         <td>{{track.d12}}</td>

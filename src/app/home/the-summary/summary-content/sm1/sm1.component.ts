@@ -17,14 +17,19 @@ export class Sm1Component implements OnInit {
   data1 :any;
   data2 :any;
   data3 :any;
+  display = false;
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitPSUData.subscribe((res)=>{
       console.log(res.data);
-      this.data1 = res.data[res.id].vol.total;
-      this.data2 = res.data[res.id].vol.lifted;
-      this.data3 = res.data[res.id].vol.remaining;
-      if(this.data1 != 0){
+      this.data1 = res.data[res.id].vol[0][1];
+      this.data2 = res.data[res.id].vol[2][1];
+      this.data3 = res.data[res.id].vol[1][1];
+
+      if(this.data1 == 0){
+        this.display = false;
+      } else {
+        this.display = true;
         this.getGraph();
       }
     });
@@ -50,6 +55,7 @@ export class Sm1Component implements OnInit {
         options: {
              responsive: true,
              legend: {
+                 display: false,
                  position: 'top',
              },
              title: {
