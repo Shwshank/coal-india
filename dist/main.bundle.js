@@ -1622,10 +1622,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var APIService = (function () {
-    // projectURL: string = 'http://qcitech.org:8081';
     function APIService(http) {
         this.http = http;
-        this.projectURL = 'http://192.168.15.221:8000'; // actual ip is 221 at the end
+        // projectURL: string = 'http://192.168.15.221:8000';  // actual ip is 221 at the end
+        this.projectURL = 'http://qcitech.org:8081';
     }
     APIService.prototype.Login = function (data) {
         return this.http.post(this.projectURL + '/login', data).map(function (res) { return res.json(); });
