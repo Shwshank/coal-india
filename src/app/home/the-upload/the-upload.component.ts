@@ -22,7 +22,7 @@ export class TheUploadComponent implements OnInit {
     // console.log(file);
     this.formData = new FormData();
     this.formData.append('file', file);
-    console.log(this.formData);
+    // console.log(this.formData);
     this.ProjectService.updateContract(this.formData);
 
   }
@@ -33,9 +33,13 @@ export class TheUploadComponent implements OnInit {
     // console.log(file);
     this.formData = new FormData();
     this.formData.append('file', file);
-    console.log(this.formData);
+    // console.log(this.formData);
     this.ProjectService.updateTracker(this.formData);
 
+  }
+
+  openURL(url) {
+    window.open(url,'_blank');
   }
 
 }

@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 
 
-    table.columns().every( function () {
+    table2.columns().every( function () {
         var that = this;
 
         $( 'input', this.footer() ).on( 'keyup change', function () {

@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
 
     this.toastr.setRootViewContainerRef(vcr);
 
-    this.ProjectService.emitToastMsg.subscribe((res)=>{
-      // this.showSuccess(res.msg1, res.msg2);
-    });
+    // this.ProjectService.emitToastMsg.subscribe((res)=>{
+    //
+    // });
 
     // Get Contract related data nad store in local storage
     // ------------------------------------------------------- starts here
@@ -77,9 +77,7 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    localStorage.setItem('login','');
-    this.router.navigate(['./login']);
-
+    this.ProjectService.logout();
   }
 
 }

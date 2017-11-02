@@ -1,6 +1,6 @@
 <div *ngIf='display' class="container-fluid"  style=" overflow-x:auto;overflow-y:hidden">
   <h2>Tracker</h2>
-  <p style="color:grey"> <i> last updated : 12/12/17 track</i></p>
+  <p style="color:grey"> <i> last updated : 12/12/17 </i></p>
   <br>
   <div class="card" >
     <div class="card-header">
@@ -142,7 +142,13 @@
           <input style="width: 28px" type="text" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
         </td>
         <td>{{parseint(track.needed/track.d8)}}</td>
-        <td>{{track.status}}</td>
+
+        <td>
+          <span *ngIf="track.status == 'Good'" style="background-color:#b5eaa8"> {{track.status}} </span>
+          <span *ngIf="track.status != 'Good'" style="background-color:#f1beba"> {{track.status}} </span>
+        </td>
+
+        <!-- b5eaa8 -->
         <td>{{track.d1d}}</td>
         <td>{{track.d2d}}</td>
         <td>{{track.d3d}}</td>

@@ -30,11 +30,11 @@ export class TheTableComponent implements OnInit {
       let temp = localStorage.getItem('tracker');
       temp = JSON.parse(temp);
       this.tracker = temp;
-      console.log(this.tracker);
+      // console.log(this.tracker);
       this.display = true;
       this.ProjectService.emitTrackerData.subscribe((res) =>{
         localStorage.setItem('tracker',JSON.stringify(res));
-        console.log(res);
+        // console.log(res);
         if(this.searchRefreshflag){
           window.location.reload();
         }
@@ -53,7 +53,7 @@ export class TheTableComponent implements OnInit {
 
     this.formData.append('monthdate', this.month);
     this.ProjectService.getTrackerByDate(this.formData);
-    // this.ProjectService.updateTracker();
+    // this.ProjectService.updateTracker(); 
   }
 
   ngOnDestroy() {
@@ -61,7 +61,7 @@ export class TheTableComponent implements OnInit {
   }
 
   parseint(data) {
-    console.log(data);
+    // console.log(data);
     data = parseInt(data);
     data = +data || 0;
     return data;
@@ -71,7 +71,7 @@ export class TheTableComponent implements OnInit {
     let formData1 = new FormData();
     this.month = this.date2
     formData1.append('monthdate', this.month);
-    console.log(this.date2);
+    // console.log(this.date2);
     this.ProjectService.getTrackerByDate(formData1);
     //this.ProjectService.getContractByDate(formData);
     this.searchRefreshflag = true;

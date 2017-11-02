@@ -49,6 +49,9 @@ module.exports = "<!-- <app-home></app-home> -->\n<router-outlet></router-outlet
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_toastr_ng2_toastr__ = __webpack_require__("../../../../ng2-toastr/ng2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_toastr_ng2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_toastr_ng2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_ProjectService__ = __webpack_require__("../../../../../src/app/service/ProjectService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,12 +63,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var AppComponent = (function () {
-    function AppComponent(route, router) {
+    function AppComponent(route, router, ProjectService, toastr, vcr) {
+        var _this = this;
         this.route = route;
         this.router = router;
+        this.ProjectService = ProjectService;
+        this.toastr = toastr;
         this.title = 'app';
+        this.toastr.setRootViewContainerRef(vcr);
+        this.ProjectService.emitToastMsg.subscribe(function (res) {
+            _this.showSuccess(res.msg1, res.msg2);
+        });
     }
+    AppComponent.prototype.showSuccess = function (msg1, msg2) {
+        this.toastr.info(msg1, msg2, { enableHTML: true });
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -74,10 +90,10 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_ProjectService__["a" /* ProjectService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ng2_toastr_ng2_toastr__["ToastsManager"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng2_toastr_ng2_toastr__["ToastsManager"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"]) === "function" && _e || Object])
 ], AppComponent);
 
-var _a, _b;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -327,9 +343,9 @@ var HomeComponent = (function () {
         this.toastr = toastr;
         this.formData = new FormData();
         this.toastr.setRootViewContainerRef(vcr);
-        this.ProjectService.emitToastMsg.subscribe(function (res) {
-            // this.showSuccess(res.msg1, res.msg2);
-        });
+        // this.ProjectService.emitToastMsg.subscribe((res)=>{
+        //
+        // });
         // Get Contract related data nad store in local storage
         // ------------------------------------------------------- starts here
         this.ProjectService.emitContractData.subscribe(function (res) {
@@ -372,8 +388,7 @@ var HomeComponent = (function () {
         this.toastr.info('You are awesome!', 'Success!', { enableHTML: true });
     };
     HomeComponent.prototype.logout = function () {
-        localStorage.setItem('login', '');
-        this.router.navigate(['./login']);
+        this.ProjectService.logout();
     };
     return HomeComponent;
 }());
@@ -476,7 +491,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-contract/the-contract.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;\">\n\n\n  <div class=\"row \" style=\"padding:30px\" >\n    <div class=\" col-md-4 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Contract</h2>\n      <p style=\"color:grey\"> <i> last updated : 12/12/17 track</i></p>\n    </div>\n    <div class=\" col-md-8 text-right\">\n\n      <!-- <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file\"><span>Updated contract : </span><input type=\"file\" (change)=\"updated($event);\" accept=\".csv\"/></span>\n      </div> -->\n    </div>\n\n  </div>\n\n  <table class=\"stripe row-border order-column  \" id=\"example2\" cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Primary Location</th>\n        <th>Secondary Location</th>\n        <th>Primary Mode</th>\n        <th>Secondary Mode</th>\n        <th>Customer Name</th>\n        <th>Unit/Plant</th>\n        <th>Annual QTY</th>\n        <th>Contract Signing Date</th>\n        <th>Days</th>\n        <th>Remaining Volume (Metric Tonne)</th>\n        <th>Enforcement Date</th>\n        <th>Auction type</th>\n        <th>FSA Number</th>\n        <th>FSA Date</th>\n        <th>Commencement Status</th>\n        <th>ANNEXURE-III</th>\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th>Subsidiary</th>\n       <th>Primary Location</th>\n       <th>Secondary Location</th>\n       <th>Primary Mode</th>\n       <th>Secondary Mode</th>\n       <th>Customer Name</th>\n       <th>Unit/Plant</th>\n       <th>Annual QTY</th>\n       <th>Contract Signing Date</th>\n       <th style=\"opacity:0\">Days</th>\n       <th>Remaining Volume (Metric Tonne)</th>\n       <th>Enforcement Date</th>\n       <th>Auction type</th>\n       <th>FSA Number</th>\n       <th>FSA Date</th>\n       <th>Commencement Status</th>\n       <th>ANNEXURE-III</th>\n\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d18}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.d4}}</td>\n        <td>{{track.d5}}</td>\n        <td>{{track.d6}}</td>\n        <td>{{track.d7}}</td>\n        <td>{{track.d8}}</td>\n        <td class=\"\">\n          <input type=\"text\" name=\"\"  [(ngModel)]='track.d16' value={{track.d16}}  style=\"width:50px !important\">\n        </td>\n        <td>{{parseint(track.d9/track.d16)}}</td>\n        <td>{{track.d10}}</td>\n        <td>{{track.d11}}</td>\n        <td>{{track.d12}}</td>\n        <td>{{track.d13}}</td>\n        <td>{{track.d14}}</td>\n        <td>{{track.d15}}</td>\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;\">\n\n\n  <div class=\"row \" style=\"padding:30px\" >\n    <div class=\" col-md-4 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Contract</h2>\n      <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n    </div>\n    <div class=\" col-md-8 text-right\">\n\n      <!-- <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file\"><span>Updated contract : </span><input type=\"file\" (change)=\"updated($event);\" accept=\".csv\"/></span>\n      </div> -->\n    </div>\n\n  </div>\n\n  <table class=\"stripe row-border order-column  \" id=\"example2\" cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Primary Location</th>\n        <th>Secondary Location</th>\n        <th>Primary Mode</th>\n        <th>Secondary Mode</th>\n        <th>Customer Name</th>\n        <th>Unit/Plant</th>\n        <th>Annual QTY</th>\n        <th>Contract Signing Date</th>\n        <th>Days</th>\n        <th>Remaining Volume (Metric Tonne)</th>\n        <th>Enforcement Date</th>\n        <th>Auction type</th>\n        <th>FSA Number</th>\n        <th>FSA Date</th>\n        <th>Commencement Status</th>\n        <th>ANNEXURE-III</th>\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th>Subsidiary</th>\n       <th>Primary Location</th>\n       <th>Secondary Location</th>\n       <th>Primary Mode</th>\n       <th>Secondary Mode</th>\n       <th>Customer Name</th>\n       <th>Unit/Plant</th>\n       <th>Annual QTY</th>\n       <th>Contract Signing Date</th>\n       <th style=\"opacity:0\">Days</th>\n       <th>Remaining Volume (Metric Tonne)</th>\n       <th>Enforcement Date</th>\n       <th>Auction type</th>\n       <th>FSA Number</th>\n       <th>FSA Date</th>\n       <th>Commencement Status</th>\n       <th>ANNEXURE-III</th>\n\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d18}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.d4}}</td>\n        <td>{{track.d5}}</td>\n        <td>{{track.d6}}</td>\n        <td>{{track.d7}}</td>\n        <td>{{track.d8}}</td>\n        <td class=\"\">\n          <input type=\"text\" name=\"\"  [(ngModel)]='track.d16' value={{track.d16}}  style=\"width:50px !important\">\n        </td>\n        <td>{{parseint(track.d9/track.d16)}}</td>\n        <td>{{track.d10}}</td>\n        <td>{{track.d11}}</td>\n        <td>{{track.d12}}</td>\n        <td>{{track.d13}}</td>\n        <td>{{track.d14}}</td>\n        <td>{{track.d15}}</td>\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -1273,7 +1288,7 @@ $(document).ready(function() {
     });
 
 
-    table.columns().every( function () {
+    table2.columns().every( function () {
         var that = this;
 
         $( 'input', this.footer() ).on( 'keyup change', function () {
@@ -1310,7 +1325,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-table/the-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;overflow-y:hidden\">\n  <h2>Tracker</h2>\n  <p style=\"color:grey\"> <i> last updated : 12/12/17 track</i></p>\n  <br>\n  <div class=\"card\" >\n    <div class=\"card-header\">\n\n      <button class=\"btn btn-primary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample\" aria-expanded=\"false\" aria-controls=\"collapseExample\">\n        Filter\n      </button>\n      &nbsp;&nbsp;&nbsp;&nbsp;\n      <b> {{date1}} &nbsp; {{date2}} </b>\n\n    </div>\n\n    <div class=\"collapse\" id=\"collapseExample\" >\n      <div class=\"card-block\">\n\n        <!-- <div class=\"form-group row\" style=\"padding-top:10px\" >\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Initial date</label>\n          <div class=\"col-6\">\n            <input class=\"form-control\" type=\"date\" id=\"example-datetime-local-input\" [(ngModel)]='date1' >\n          </div>\n        </div> -->\n\n        <div class=\"form-group row\">\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Select month</label>\n          <div class=\"col-4\">\n            <input class=\"form-control\" type=\"month\" id=\"example-datetime-local-input\"  [(ngModel)]='date2' format=\"dd/MM/yyyy\">\n          </div>\n          <div class=\"3\">\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"searchByDate()\" >Search</button>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n  <table class=\"stripe row-border order-column\" id=\"example\"   cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Location</th>\n        <th>Mode - Customer - Plant</th>\n        <th>Total Lifted</th>\n        <th>Days</th>\n        <th>Total Remaining</th>\n        <th>Status</th>\n        <th>1</th>\n        <th>2</th>\n        <th>3</th>\n        <th>4</th>\n        <th>5</th>\n        <th>6</th>\n        <th>7</th>\n        <th>8</th>\n        <th>9</th>\n        <th>10</th>\n        <th>11</th>\n        <th>12</th>\n        <th>13</th>\n        <th>14</th>\n        <th>15</th>\n        <th>16</th>\n        <th>17</th>\n        <th>18</th>\n        <th>19</th>\n        <th>20</th>\n        <th>21</th>\n        <th>22</th>\n        <th>23</th>\n        <th>24</th>\n        <th>25</th>\n        <th>26</th>\n        <th>27</th>\n        <th>28</th>\n        <th>29</th>\n        <th>30</th>\n        <th>31</th>\n\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th style=\"opacity:0;  cursor:default;\">Subsidiary</th>\n       <th style=\"opacity:0;  cursor:default;\">Location</th>\n       <th style=\"opacity:0;  cursor:default;\">Mode - Customer - Plant</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Lifted</th>\n       <th style=\"opacity:0;  cursor:default;\">Days</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Remaining</th>\n       <th style=\"opacity:0;  cursor:default;\">Status</th>\n       <th style=\"opacity:0;  cursor:default;\">1</th>\n       <th style=\"opacity:0;  cursor:default;\">2</th>\n       <th style=\"opacity:0;  cursor:default;\">3</th>\n       <th style=\"opacity:0;  cursor:default;\">4</th>\n       <th style=\"opacity:0;  cursor:default;\">5</th>\n       <th style=\"opacity:0;  cursor:default;\">6</th>\n       <th style=\"opacity:0;  cursor:default;\">7</th>\n       <th style=\"opacity:0;  cursor:default;\">8</th>\n       <th style=\"opacity:0;  cursor:default;\">9</th>\n       <th style=\"opacity:0;  cursor:default;\">10</th>\n       <th style=\"opacity:0;  cursor:default;\">11</th>\n       <th style=\"opacity:0;  cursor:default;\">12</th>\n       <th style=\"opacity:0;  cursor:default;\">13</th>\n       <th style=\"opacity:0;  cursor:default;\">14</th>\n       <th style=\"opacity:0;  cursor:default;\">15</th>\n       <th style=\"opacity:0;  cursor:default;\">16</th>\n       <th style=\"opacity:0;  cursor:default;\">17</th>\n       <th style=\"opacity:0;  cursor:default;\">18</th>\n       <th style=\"opacity:0;  cursor:default;\">19</th>\n       <th style=\"opacity:0;  cursor:default;\">20</th>\n       <th style=\"opacity:0;  cursor:default;\">21</th>\n       <th style=\"opacity:0;  cursor:default;\">22</th>\n       <th style=\"opacity:0;  cursor:default;\">23</th>\n       <th style=\"opacity:0;  cursor:default;\">24</th>\n       <th style=\"opacity:0;  cursor:default;\">25</th>\n       <th style=\"opacity:0;  cursor:default;\">26</th>\n       <th style=\"opacity:0;  cursor:default;\">27</th>\n       <th style=\"opacity:0;  cursor:default;\">28</th>\n       <th style=\"opacity:0;  cursor:default;\">29</th>\n       <th style=\"opacity:0;  cursor:default;\">30</th>\n       <th style=\"opacity:0;  cursor:default;\">31</th>\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.lifted}}</td>\n        <td class=\"\">\n          <input style=\"width: 28px\" type=\"text\" name=\"\"   [(ngModel)]='track.d8' value={{track.d8}}>\n        </td>\n        <td>{{parseint(track.needed/track.d8)}}</td>\n        <td>{{track.status}}</td>\n        <td>{{track.d1d}}</td>\n        <td>{{track.d2d}}</td>\n        <td>{{track.d3d}}</td>\n        <td>{{track.d4d}}</td>\n        <td>{{track.d5d}}</td>\n        <td>{{track.d6d}}</td>\n        <td>{{track.d7d}}</td>\n        <td>{{track.d8d}}</td>\n        <td>{{track.d9d}}</td>\n        <td>{{track.d10d}}</td>\n        <td>{{track.d11d}}</td>\n        <td>{{track.d12d}}</td>\n        <td>{{track.d13d}}</td>\n        <td>{{track.d14d}}</td>\n        <td>{{track.d15d}}</td>\n        <td>{{track.d16d}}</td>\n        <td>{{track.d17d}}</td>\n        <td>{{track.d18d}}</td>\n        <td>{{track.d19d}}</td>\n        <td>{{track.d20d}}</td>\n        <td>{{track.d21d}}</td>\n        <td>{{track.d22d}}</td>\n        <td>{{track.d23d}}</td>\n        <td>{{track.d24d}}</td>\n        <td>{{track.d25d}}</td>\n        <td>{{track.d26d}}</td>\n        <td>{{track.d27d}}</td>\n        <td>{{track.d28d}}</td>\n        <td>{{track.d29d}}</td>\n        <td>{{track.d30d}}</td>\n        <td>{{track.d31d}}</td>\n\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;overflow-y:hidden\">\n  <h2>Tracker</h2>\n  <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n  <br>\n  <div class=\"card\" >\n    <div class=\"card-header\">\n\n      <button class=\"btn btn-primary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample\" aria-expanded=\"false\" aria-controls=\"collapseExample\">\n        Filter\n      </button>\n      &nbsp;&nbsp;&nbsp;&nbsp;\n      <b> {{date1}} &nbsp; {{date2}} </b>\n\n    </div>\n\n    <div class=\"collapse\" id=\"collapseExample\" >\n      <div class=\"card-block\">\n\n        <!-- <div class=\"form-group row\" style=\"padding-top:10px\" >\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Initial date</label>\n          <div class=\"col-6\">\n            <input class=\"form-control\" type=\"date\" id=\"example-datetime-local-input\" [(ngModel)]='date1' >\n          </div>\n        </div> -->\n\n        <div class=\"form-group row\">\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Select month</label>\n          <div class=\"col-4\">\n            <input class=\"form-control\" type=\"month\" id=\"example-datetime-local-input\"  [(ngModel)]='date2' format=\"dd/MM/yyyy\">\n          </div>\n          <div class=\"3\">\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"searchByDate()\" >Search</button>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n  <table class=\"stripe row-border order-column\" id=\"example\"   cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Location</th>\n        <th>Mode - Customer - Plant</th>\n        <th>Total Lifted</th>\n        <th>Days</th>\n        <th>Total Remaining</th>\n        <th>Status</th>\n        <th>1</th>\n        <th>2</th>\n        <th>3</th>\n        <th>4</th>\n        <th>5</th>\n        <th>6</th>\n        <th>7</th>\n        <th>8</th>\n        <th>9</th>\n        <th>10</th>\n        <th>11</th>\n        <th>12</th>\n        <th>13</th>\n        <th>14</th>\n        <th>15</th>\n        <th>16</th>\n        <th>17</th>\n        <th>18</th>\n        <th>19</th>\n        <th>20</th>\n        <th>21</th>\n        <th>22</th>\n        <th>23</th>\n        <th>24</th>\n        <th>25</th>\n        <th>26</th>\n        <th>27</th>\n        <th>28</th>\n        <th>29</th>\n        <th>30</th>\n        <th>31</th>\n\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th style=\"opacity:0;  cursor:default;\">Subsidiary</th>\n       <th style=\"opacity:0;  cursor:default;\">Location</th>\n       <th style=\"opacity:0;  cursor:default;\">Mode - Customer - Plant</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Lifted</th>\n       <th style=\"opacity:0;  cursor:default;\">Days</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Remaining</th>\n       <th style=\"opacity:0;  cursor:default;\">Status</th>\n       <th style=\"opacity:0;  cursor:default;\">1</th>\n       <th style=\"opacity:0;  cursor:default;\">2</th>\n       <th style=\"opacity:0;  cursor:default;\">3</th>\n       <th style=\"opacity:0;  cursor:default;\">4</th>\n       <th style=\"opacity:0;  cursor:default;\">5</th>\n       <th style=\"opacity:0;  cursor:default;\">6</th>\n       <th style=\"opacity:0;  cursor:default;\">7</th>\n       <th style=\"opacity:0;  cursor:default;\">8</th>\n       <th style=\"opacity:0;  cursor:default;\">9</th>\n       <th style=\"opacity:0;  cursor:default;\">10</th>\n       <th style=\"opacity:0;  cursor:default;\">11</th>\n       <th style=\"opacity:0;  cursor:default;\">12</th>\n       <th style=\"opacity:0;  cursor:default;\">13</th>\n       <th style=\"opacity:0;  cursor:default;\">14</th>\n       <th style=\"opacity:0;  cursor:default;\">15</th>\n       <th style=\"opacity:0;  cursor:default;\">16</th>\n       <th style=\"opacity:0;  cursor:default;\">17</th>\n       <th style=\"opacity:0;  cursor:default;\">18</th>\n       <th style=\"opacity:0;  cursor:default;\">19</th>\n       <th style=\"opacity:0;  cursor:default;\">20</th>\n       <th style=\"opacity:0;  cursor:default;\">21</th>\n       <th style=\"opacity:0;  cursor:default;\">22</th>\n       <th style=\"opacity:0;  cursor:default;\">23</th>\n       <th style=\"opacity:0;  cursor:default;\">24</th>\n       <th style=\"opacity:0;  cursor:default;\">25</th>\n       <th style=\"opacity:0;  cursor:default;\">26</th>\n       <th style=\"opacity:0;  cursor:default;\">27</th>\n       <th style=\"opacity:0;  cursor:default;\">28</th>\n       <th style=\"opacity:0;  cursor:default;\">29</th>\n       <th style=\"opacity:0;  cursor:default;\">30</th>\n       <th style=\"opacity:0;  cursor:default;\">31</th>\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.lifted}}</td>\n        <td class=\"\">\n          <input style=\"width: 28px\" type=\"text\" name=\"\"   [(ngModel)]='track.d8' value={{track.d8}}>\n        </td>\n        <td>{{parseint(track.needed/track.d8)}}</td>\n\n        <td>\n          <span *ngIf=\"track.status == 'Good'\" style=\"background-color:#b5eaa8\"> {{track.status}} </span>\n          <span *ngIf=\"track.status != 'Good'\" style=\"background-color:#f1beba\"> {{track.status}} </span>\n        </td>\n\n        <!-- b5eaa8 -->\n        <td>{{track.d1d}}</td>\n        <td>{{track.d2d}}</td>\n        <td>{{track.d3d}}</td>\n        <td>{{track.d4d}}</td>\n        <td>{{track.d5d}}</td>\n        <td>{{track.d6d}}</td>\n        <td>{{track.d7d}}</td>\n        <td>{{track.d8d}}</td>\n        <td>{{track.d9d}}</td>\n        <td>{{track.d10d}}</td>\n        <td>{{track.d11d}}</td>\n        <td>{{track.d12d}}</td>\n        <td>{{track.d13d}}</td>\n        <td>{{track.d14d}}</td>\n        <td>{{track.d15d}}</td>\n        <td>{{track.d16d}}</td>\n        <td>{{track.d17d}}</td>\n        <td>{{track.d18d}}</td>\n        <td>{{track.d19d}}</td>\n        <td>{{track.d20d}}</td>\n        <td>{{track.d21d}}</td>\n        <td>{{track.d22d}}</td>\n        <td>{{track.d23d}}</td>\n        <td>{{track.d24d}}</td>\n        <td>{{track.d25d}}</td>\n        <td>{{track.d26d}}</td>\n        <td>{{track.d27d}}</td>\n        <td>{{track.d28d}}</td>\n        <td>{{track.d29d}}</td>\n        <td>{{track.d30d}}</td>\n        <td>{{track.d31d}}</td>\n\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -1351,11 +1366,11 @@ var TheTableComponent = (function () {
             var temp = localStorage.getItem('tracker');
             temp = JSON.parse(temp);
             this.tracker = temp;
-            console.log(this.tracker);
+            // console.log(this.tracker);
             this.display = true;
             this.ProjectService.emitTrackerData.subscribe(function (res) {
                 localStorage.setItem('tracker', JSON.stringify(res));
-                console.log(res);
+                // console.log(res);
                 if (_this.searchRefreshflag) {
                     window.location.reload();
                 }
@@ -1371,13 +1386,13 @@ var TheTableComponent = (function () {
         // console.log(this.month);
         this.formData.append('monthdate', this.month);
         this.ProjectService.getTrackerByDate(this.formData);
-        // this.ProjectService.updateTracker();
+        // this.ProjectService.updateTracker(); 
     };
     TheTableComponent.prototype.ngOnDestroy = function () {
         localStorage.setItem('trackerFlag', '0');
     };
     TheTableComponent.prototype.parseint = function (data) {
-        console.log(data);
+        // console.log(data);
         data = parseInt(data);
         data = +data || 0;
         return data;
@@ -1386,7 +1401,7 @@ var TheTableComponent = (function () {
         var formData1 = new FormData();
         this.month = this.date2;
         formData1.append('monthdate', this.month);
-        console.log(this.date2);
+        // console.log(this.date2);
         this.ProjectService.getTrackerByDate(formData1);
         //this.ProjectService.getContractByDate(formData);
         this.searchRefreshflag = true;
@@ -1428,7 +1443,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-upload/the-upload.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\"  style=\" overflow-x:auto;overflow-y:hidden\">\n\n  <div class=\"row \" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Uploads</h2>\n    </div>\n    <div class=\"col-md-6 \">\n    </div>\n  </div>\n\n  <div class=\"row justify-content-md-center\" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-center\" style=\"min-width: 200px; padding:20px;\">\n      <span class=\"text-center\" style=\"font-size:2rem\">\n        <i class=\"fa fa-file-text-o fa-5x\"></i>\n      </span> <br><br>\n      <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file btn-primary\" style=\"width:100% !important\"><span>Updated contract : </span><input type=\"file\" (change)=\"updateContract($event);\" accept=\".csv\"/></span>\n      </div>\n    </div>\n\n    <div class=\"col-md-6 text-center\"  style=\"min-width: 200px; padding:20px;\">\n      <span class=\"\"  style=\"font-size:2rem\">\n        <i class=\"fa fa-line-chart fa-5x\"></i>\n      </span><br><br>\n      <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" style=\"width:100%\">\n          <span class=\"btn  btn-file  btn-primary\" style=\"width:100% !important\"><span>Updated daily entry : </span><input type=\"file\"(change)=\"updateTracker($event);\"  accept=\".csv\"/></span>\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row justify-content-md-center\" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-center\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h5>Contract Tracker</h5>\n        </div>\n        <div class=\"card-block text-center\" style=\"height: 350px; overflow-y:auto\" >\n\n          <table class=\"table-striped table-hover\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" >\n            <thead  style=\"background-color:#dcefff\">\n              <tr>\n                <th  class=\"text-center\">S.no.</th>\n                <th  class=\"text-center\">File name</th>\n                <th  class=\"text-center\">Uploader</th>\n                <th  class=\"text-center\">Download</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1.</td>\n                <td>Contract.csv</td>\n                <td>Tom Eleven</td>\n                <td style=\"color:#0275d8\">\n\n                  <a class=\"nav-link\" target=\"_blank\" [routerLink]=\"'https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv'\">\n                     <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n                  </a>\n                </td>\n\n              </tr>\n\n            </tbody>\n          </table>\n\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-md-6 text-center\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h5>Daly Entry Tracker</h5>\n        </div>\n        <div class=\"card-block\" style=\"height: 350px; overflow-y:auto\" >\n\n          <table class=\"table-striped table-hover\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" >\n            <thead  style=\"background-color:#dcefff\">\n              <tr>\n                <th  class=\"text-center\">S.no.</th>\n                <th  class=\"text-center\">File name</th>\n                <th  class=\"text-center\">Uploader</th>\n                <th  class=\"text-center\">Download</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1.</td>\n                <td>Contract.csv</td>\n                <td>Tom Eleven</td>\n                <td style=\"color:#0275d8\">\n\n                  <a class=\"nav-link\" target=\"_blank\" [routerLink]=\"'https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Process%20Tracker%20Template.csv'\">\n                     <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n                  </a>\n\n                </td>\n\n              </tr>\n\n            </tbody>\n          </table>\n\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\"  style=\" overflow-x:auto;overflow-y:hidden\">\n\n  <div class=\"row \" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Uploads</h2>\n    </div>\n    <div class=\"col-md-6 \">\n    </div>\n  </div>\n\n  <div class=\"row justify-content-md-center\" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-center\" style=\"min-width: 200px; padding:20px;\">\n      <span class=\"text-center\" style=\"font-size:2rem\">\n        <i class=\"fa fa-file-text-o fa-5x\"></i>\n      </span> <br><br>\n      <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file btn-primary\" style=\"width:100% !important\"><span>Updated contract : </span><input type=\"file\" (change)=\"updateContract($event);\" accept=\".csv\"/></span>\n      </div>\n    </div>\n\n    <div class=\"col-md-6 text-center\"  style=\"min-width: 200px; padding:20px;\">\n      <span class=\"\"  style=\"font-size:2rem\">\n        <i class=\"fa fa-line-chart fa-5x\"></i>\n      </span><br><br>\n      <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" style=\"width:100%\">\n          <span class=\"btn  btn-file  btn-primary\" style=\"width:100% !important\"><span>Updated daily entry : </span><input type=\"file\"(change)=\"updateTracker($event);\"  accept=\".csv\"/></span>\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row justify-content-md-center\" style=\"padding:30px\" >\n\n    <div class=\" col-md-6 text-center\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h5>Contract Tracker</h5>\n        </div>\n        <div class=\"card-block text-center\" style=\"height: 350px; overflow-y:auto\" >\n\n          <table class=\"table-striped table-hover\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" >\n            <thead  style=\"background-color:#dcefff\">\n              <tr>\n                <th  class=\"text-center\">S.no.</th>\n                <th  class=\"text-center\">File name</th>\n                <th  class=\"text-center\">Uploader</th>\n                <th  class=\"text-center\">Download</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1.</td>\n                <td>Contract.csv</td>\n                <td>Tom Eleven</td>\n                <td style=\"color:#0275d8\">\n\n                  <a class=\"nav-link\" (click)='openURL(\"https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv\")'>\n                     <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n                  </a>\n                </td>\n\n              </tr>\n\n            </tbody>\n          </table>\n\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-md-6 text-center\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h5>Daly Entry Tracker</h5>\n        </div>\n        <div class=\"card-block\" style=\"height: 350px; overflow-y:auto\" >\n\n          <table class=\"table-striped table-hover\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" >\n            <thead  style=\"background-color:#dcefff\">\n              <tr>\n                <th  class=\"text-center\">S.no.</th>\n                <th  class=\"text-center\">File name</th>\n                <th  class=\"text-center\">Uploader</th>\n                <th  class=\"text-center\">Download</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1.</td>\n                <td>Contract.csv</td>\n                <td>Tom Eleven</td>\n                <td style=\"color:#0275d8\">\n\n                  <a class=\"nav-link\" (click)='openURL(\"https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Process%20Tracker%20Template.csv\")'>\n                     <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n                  </a>\n\n                </td>\n\n              </tr>\n\n            </tbody>\n          </table>\n\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -1462,7 +1477,7 @@ var TheUploadComponent = (function () {
         // console.log(file);
         this.formData = new FormData();
         this.formData.append('file', file);
-        console.log(this.formData);
+        // console.log(this.formData);
         this.ProjectService.updateContract(this.formData);
     };
     TheUploadComponent.prototype.updateTracker = function ($event) {
@@ -1471,8 +1486,11 @@ var TheUploadComponent = (function () {
         // console.log(file);
         this.formData = new FormData();
         this.formData.append('file', file);
-        console.log(this.formData);
+        // console.log(this.formData);
         this.ProjectService.updateTracker(this.formData);
+    };
+    TheUploadComponent.prototype.openURL = function (url) {
+        window.open(url, '_blank');
     };
     return TheUploadComponent;
 }());
@@ -1668,6 +1686,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__APIService__ = __webpack_require__("../../../../../src/app/service/APIService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1679,9 +1698,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var ProjectService = (function () {
-    function ProjectService(APIService) {
+    function ProjectService(APIService, route, router) {
         this.APIService = APIService;
+        this.route = route;
+        this.router = router;
         this.month = '2017-10';
         this.emitToastMsg = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.emitContractData = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -1696,6 +1718,15 @@ var ProjectService = (function () {
         var y = d.getFullYear();
         this.month = y + '-' + m;
     }
+    ProjectService.prototype.internetConnection = function () {
+        var _this = this;
+        window.addEventListener('online', function () {
+            _this.toast('Please refresh', 'Online!');
+        });
+        window.addEventListener('offline', function () {
+            _this.toast('Some components might not work', 'Offline!');
+        });
+    };
     ProjectService.prototype.login = function (data) {
         var _this = this;
         this.APIService.Login(data).subscribe(function (res) {
@@ -1704,7 +1735,24 @@ var ProjectService = (function () {
                 localStorage.setItem('login', 'true');
                 _this.emitUserLogin.emit('user');
             }
+            else {
+                // this.toast('Invalid username or password ', 'Error!');
+            }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Invalid username or password ', 'Error!');
         });
+    };
+    ProjectService.prototype.logout = function () {
+        // localStorage.setItem('login','');
+        localStorage.removeItem('contractFlag');
+        localStorage.removeItem('contracts');
+        localStorage.removeItem('login');
+        localStorage.removeItem('psuidname');
+        localStorage.removeItem('summary');
+        localStorage.removeItem('tracker');
+        localStorage.removeItem('trackerFlag');
+        this.router.navigate(['./login']);
     };
     ProjectService.prototype.allPSUData = function (id) {
         var data = localStorage.getItem('summary');
@@ -1722,52 +1770,83 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.getContract = function (data) {
         var _this = this;
+        this.internetConnection();
         this.APIService.GetUpdatedContract(data).subscribe(function (res) {
-            // console.log(res.contracts_data);
-            _this.contract(res.contracts_data);
+            if (res.success) {
+                _this.contract(res.contracts_data);
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
         });
     };
     ProjectService.prototype.updateContract = function (data) {
         var _this = this;
         this.APIService.UpdateContract(data).subscribe(function (res) {
             // console.log(res);
-            // update contract
-            _this.getContract(1);
+            if (res) {
+                _this.getContract(1);
+                _this.toast('Contract updated', 'Success!');
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
         });
     };
     ProjectService.prototype.updateTracker = function (data) {
         var _this = this;
         this.APIService.UpdateTracker(data).subscribe(function (res) {
-            // console.log(res);
-            // update Daily tracker data data
-            var formData = new FormData();
-            formData.append('monthdate', _this.month);
-            _this.getTrackerByDate(formData);
+            if (res) {
+                // console.log(res);
+                // update Daily tracker data data
+                var formData = new FormData();
+                formData.append('monthdate', _this.month);
+                _this.getTrackerByDate(formData);
+                _this.toast('Tracker updated', 'Success!');
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
         });
     };
     ProjectService.prototype.getTrackerByDate = function (data) {
         var _this = this;
         this.APIService.GetTrackerByDate(data).subscribe(function (res) {
-            // console.log(res.data);
-            _this.tracker(res.data);
+            if (res.success) {
+                // console.log(res.data);
+                _this.tracker(res.data);
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
         });
     };
     ProjectService.prototype.getPsuSummary = function (data) {
         var _this = this;
         this.APIService.GetAllPSUSummary(data).subscribe(function (res) {
-            // console.log(res);
-            _this.emitSummaryData.emit(res);
-            _this.PSUData = res.data;
+            if (res.success) {
+                // console.log(res);
+                _this.emitSummaryData.emit(res);
+                _this.PSUData = res.data;
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
         });
     };
     return ProjectService;
 }());
 ProjectService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__APIService__["a" /* APIService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__APIService__["a" /* APIService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__APIService__["a" /* APIService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__APIService__["a" /* APIService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], ProjectService);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=ProjectService.js.map
 
 /***/ }),
