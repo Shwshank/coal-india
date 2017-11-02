@@ -38,7 +38,6 @@ export class ProjectService {
       });
   }
 
-
   login(data) {
     this.APIService.Login(data).subscribe((res)=>{
       console.log(res);
@@ -65,6 +64,13 @@ export class ProjectService {
     localStorage.removeItem('trackerFlag');
 
     this.router.navigate(['./login']);
+  }
+
+  checkLogin() {
+    let login = localStorage.getItem('login');
+    if(login === 'true') {
+      this.router.navigate(['./home']);
+    }
   }
 
   allPSUData(id) {

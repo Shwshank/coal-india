@@ -19,8 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
     private ProjectService: ProjectService, public toastr: ToastsManager, vcr: ViewContainerRef) {
 
-    this.toastr.setRootViewContainerRef(vcr);
-
+    // this.toastr.setRootViewContainerRef(vcr);
     // this.ProjectService.emitToastMsg.subscribe((res)=>{
     //
     // });
@@ -54,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
     // this.showSuccess('1','1');
     // Get Contract api
     this.ProjectService.getContract(1);
