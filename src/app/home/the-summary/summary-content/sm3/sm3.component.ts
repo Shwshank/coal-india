@@ -66,7 +66,7 @@ export class Sm3Component implements OnInit {
            labels: [this.label1,this.label2,this.label3,this.label4],
            datasets: [{
                data : [this.data1,this.data2,this.data3,this.data4],
-               backgroundColor: ['#025AA5','#8e8e8e','#cccccc','#5683a9']
+               backgroundColor: ['#0275D8','#469846','#8E8E8E','#F0AD4E']
            },
          ]
         },
@@ -79,7 +79,7 @@ export class Sm3Component implements OnInit {
              },
              title: {
                  display: true,
-                 text:  'Total ' +this.label5+' '+ this.data5,
+                //  text:  'Total ' +this.label5+' '+ this.data5,
              },
              animation: {
                  animateScale: true,

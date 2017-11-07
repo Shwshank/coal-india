@@ -7,3 +7,10 @@ tfoot input {
 tfoot {
     display: table-header-group !important;
 }
+
+th, td {
+  width: 10px !important;
+}
+tfoot tr th input {
+  width: 18px !important;
+}

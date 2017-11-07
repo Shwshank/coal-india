@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $('#example tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input style="width:10px !important" type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input style="width:10px !important" type="text" placeholder="" />' );
     } );
 
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     $('#example2 tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input style="width:65px" type="text" placeholder="" />' );
     } );
 
 

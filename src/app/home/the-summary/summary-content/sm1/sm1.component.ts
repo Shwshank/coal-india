@@ -11,63 +11,36 @@ export class Sm1Component implements OnInit {
 
   labels = ['Lifted','Remaining'];
 
-  @ViewChild('donut') donut: ElementRef;
+   // @ViewChild('donut') donut: ElementRef;
   donutCtx: any;
   myChart: any;
   data1 :any;
   data2 :any;
   data3 :any;
+  data4 :any;
+  data5 :any;
+  data6 :any;
   display = false;
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitPSUData.subscribe((res)=>{
       console.log(res.data);
       this.data1 = res.data[res.id].vol[0][1];
-      this.data2 = res.data[res.id].vol[2][1];
-      this.data3 = res.data[res.id].vol[1][1];
+      this.data2 = res.data[res.id].vol[1][1];
+      this.data3 = res.data[res.id].vol[2][1];
+      this.data4 = res.data[res.id].vol[3][1];
+      this.data5 = res.data[res.id].vol[4][1];
 
       if(this.data1 == 0){
         this.display = false;
       } else {
         this.display = true;
-        this.getGraph();
+        // this.getGraph();
       }
     });
   }
 
   ngOnInit() {
-  }
-
-  getGraph() {
-
-    this.donutCtx = this.donut.nativeElement.getContext('2d');
-
-     this.myChart = new Chart(this.donutCtx, {
-        type: 'doughnut',
-        data: {
-           labels: this.labels,
-           datasets: [{
-               data : [this.data2,this.data3],
-               backgroundColor: ['#025AA5','#8e8e8e']
-           },
-         ]
-        },
-        options: {
-             responsive: true,
-             legend: {
-                 display: false,
-                 position: 'top',
-             },
-             title: {
-                 display: true,
-                 text: 'Signed Amt '+ this.data1,
-             },
-             animation: {
-                 animateScale: true,
-                 animateRotate: true
-             }
-         }
-    });
   }
 
 }

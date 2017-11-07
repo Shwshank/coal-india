@@ -31,6 +31,8 @@ export class TheContractComponent implements OnInit {
       this.tracker = temp;
       this.display = true;
 
+      // console.log(this.tracker);
+
       this.ProjectService.emitContractData.subscribe((res) =>{
         // console.log(res);
         localStorage.setItem('contracts',JSON.stringify(res));
@@ -60,6 +62,16 @@ export class TheContractComponent implements OnInit {
     this.formData.append('file', file);
     console.log(this.formData);
     this.ProjectService.updateContract(this.formData);
+
+  }
+
+  saveDayNo(day,id) {
+    console.log(day);
+    console.log(id);
+    this.formData = new FormData();
+    this.formData.append('cid',id);
+    this.formData.append('days',day);
+    this.ProjectService.updateContractDays(this.formData);
 
   }
 

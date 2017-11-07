@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.ProjectService.emitContractData.subscribe((res) =>{
       // console.log(res);
       localStorage.setItem('contracts',JSON.stringify(res));
+      
     });
     // ------------------------------------------------------- end here
 
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
     // ------------------------------------------------------- starts here
     this.ProjectService.emitTrackerData.subscribe((res) =>{
       localStorage.setItem('tracker',JSON.stringify(res));
+      console.log('1');
       // console.log(res);
     });
     // -------------------------------------------------------ends here
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     // this.showSuccess('1','1');
     // Get Contract api
     this.ProjectService.getContract(1);

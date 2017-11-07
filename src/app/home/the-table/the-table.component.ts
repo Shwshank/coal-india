@@ -18,6 +18,7 @@ export class TheTableComponent implements OnInit {
   formData = new FormData();
   month: any;
   searchRefreshflag = false;
+  cachemonth : any;
 
   constructor(private ProjectService: ProjectService) {
     this.trackerFlag = localStorage.getItem('trackerFlag');
@@ -50,10 +51,11 @@ export class TheTableComponent implements OnInit {
     let y = d.getFullYear();
     this.month = y+'-'+m;
     // console.log(this.month);
+    localStorage.setItem('month',this.month);
 
     this.formData.append('monthdate', this.month);
     this.ProjectService.getTrackerByDate(this.formData);
-    // this.ProjectService.updateTracker(); 
+    // this.ProjectService.updateTracker();
   }
 
   ngOnDestroy() {
@@ -75,5 +77,20 @@ export class TheTableComponent implements OnInit {
     this.ProjectService.getTrackerByDate(formData1);
     //this.ProjectService.getContractByDate(formData);
     this.searchRefreshflag = true;
+  }
+
+  calStatus(lifted,needed,days) {
+    let act = needed/days;
+    let diff = lifted - act;
+    let per20 = .2;
+    let per10 = .1;
+    if(diff>=(act*per20)) {
+      return "Best";
+    } else if(diff>(-1*act*per10)) {
+      return 'Good';
+    } else if(diff>(-1*act*per20)) {
+      return "Bad";
+    }
+    return "Worst";
   }
 }

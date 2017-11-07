@@ -4,7 +4,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable()
 export class APIService {
 
-  // projectURL: string = 'http://192.168.15.221:8000';  // actual ip is 221 at the end
+  // projectURL: string = 'http://192.168.15.221:8000';
   projectURL: string = 'http://qcitech.org:8081';
 
   constructor( private http: Http, ) {}
@@ -37,5 +37,8 @@ export class APIService {
     return this.http.get(this.projectURL+'/getsubsidiarysummary',data).map(res=>res.json());
   }
 
+  UpdateDays(data) {
+    return this.http.post(this.projectURL+'/savecontractdays',data).map(res=>res.json());
+  }
 
 }

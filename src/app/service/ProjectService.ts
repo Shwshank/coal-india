@@ -30,11 +30,11 @@ export class ProjectService {
   internetConnection() {
 
     window.addEventListener('online', () => {
-      this.toast('Please refresh','Online!');
+      // this.toast('Please refresh','Online!');
       });
 
     window.addEventListener('offline', () => {
-      this.toast('Some components might not work','Offline!');
+      // this.toast('Some components might not work','Offline!');
       });
   }
 
@@ -157,5 +157,22 @@ export class ProjectService {
       this.toast('Something went wrong. Please check logs ','Error!');
     });
   }
+
+  updateContractDays(data) {
+    this.APIService.UpdateDays(data).subscribe((res)=>{
+      if(res.success){
+
+        this.getContract(1);
+
+        let formData = new FormData();
+        formData.append('monthdate', this.month);
+        this.getTrackerByDate(formData);
+        this.toast('Please refresh','Data Updated!');
+      } else {}
+    },(err)=>{
+      console.log(err);
+      this.toast('Something went wrong. Please check logs ','Error!');
+      });
+    }
 
 }

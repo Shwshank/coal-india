@@ -11,7 +11,7 @@ export class Sm4Component implements OnInit {
 
   labels = ['Lifted','Remaining'];
 
-  @ViewChild('donut') donut: ElementRef;
+
   donutCtx: any;
   myChart: any;
   data1 :any;
@@ -33,6 +33,7 @@ export class Sm4Component implements OnInit {
       // console.log(res.data);
       this.data1 = res.data[res.id].slabreak[0][1];
       this.data2 = res.data[res.id].slabreak[1][1];
+      this.data3 = res.data[res.id].slabreak[2][1];
 
       this.label1 = res.data[res.id].slabreak[0][0];
       this.label2 = res.data[res.id].slabreak[1][0];
@@ -41,7 +42,6 @@ export class Sm4Component implements OnInit {
         this.display = false;
       } else {
         this.display = true;
-        this.getGraph();
       }
 
     });
@@ -50,36 +50,5 @@ export class Sm4Component implements OnInit {
   ngOnInit() {
   }
 
-  getGraph() {
-
-    this.donutCtx = this.donut.nativeElement.getContext('2d');
-
-     this.myChart = new Chart(this.donutCtx, {
-        type: 'doughnut',
-        data: {
-           labels: [this.label1,this.label2],
-           datasets: [{
-               data : [this.data1,this.data2],
-               backgroundColor: ['#025AA5','#8e8e8e']
-           },
-         ]
-        },
-        options: {
-             responsive: true,
-             legend: {
-                 display: false,
-                 position: 'top',
-             },
-             title: {
-                 display: true,
-                 text: this.label1+' '+ this.data1,
-             },
-             animation: {
-                 animateScale: true,
-                 animateRotate: true
-             }
-         }
-    });
-  }
 
 }

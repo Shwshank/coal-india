@@ -1,27 +1,20 @@
 <div class="container" >
 
-  <div class="row " style="padding:30px" >
+  <div class="row " style="padding-top:20px" >
     <div class=" col-md-6 text-left">
       <h2 style="margin-bottom:0px; ">Summary {{psu}}</h2>
-      <!-- <p style="color:grey"> <i> last updated : 12/12/17 track</i></p> -->
       <br>
-      <div class="dropdown">
+    </div>
+
+    <div class=" col-md-6 " style="float:right" >
+      <div class="dropdown"style="float:right">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Select subsidiary
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="padding-right:2px !important">
           <a *ngFor='let psu of PSUArray' class="dropdown-item"  (click)="psuSummary(psu._id, psu.name)">{{psu.name}}</a>
-          <!-- <a class="dropdown-item"  (click)="psuSummary('1')">SECL</a>
-          <a class="dropdown-item"  (click)="psuSummary('2')">MCL</a>
-          <a class="dropdown-item"  (click)="psuSummary('3')">NCL</a>
-          <a class="dropdown-item"  (click)="psuSummary('4')">WCL</a>
-          <a class="dropdown-item"  (click)="psuSummary('5')">CCL</a> -->
-
         </div>
       </div>
-    </div>
-
-    <div class=" col-md-8 ">
     </div>
 
 

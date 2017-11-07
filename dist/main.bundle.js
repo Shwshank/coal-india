@@ -357,6 +357,7 @@ var HomeComponent = (function () {
         // ------------------------------------------------------- starts here
         this.ProjectService.emitTrackerData.subscribe(function (res) {
             localStorage.setItem('tracker', JSON.stringify(res));
+            console.log('1');
             // console.log(res);
         });
         // -------------------------------------------------------ends here
@@ -478,7 +479,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "tfoot input {\n        width: 100%;\n        padding: 3px;\n        box-sizing: border-box;\n    }\n\ntfoot {\n    display: table-header-group !important;\n}\n", ""]);
+exports.push([module.i, "tfoot input {\n        width: 100%;\n        padding: 3px;\n        box-sizing: border-box;\n    }\n\ntfoot {\n    display: table-header-group !important;\n}\n\nth, td {\n  width: 10px !important;\n}\ntfoot tr th input {\n  width: 18px !important;\n}\n", ""]);
 
 // exports
 
@@ -491,7 +492,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-contract/the-contract.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;\">\n\n\n  <div class=\"row \" style=\"padding:30px\" >\n    <div class=\" col-md-4 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Contract</h2>\n      <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n    </div>\n    <div class=\" col-md-8 text-right\">\n\n      <!-- <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file\"><span>Updated contract : </span><input type=\"file\" (change)=\"updated($event);\" accept=\".csv\"/></span>\n      </div> -->\n    </div>\n\n  </div>\n\n  <table class=\"stripe row-border order-column  \" id=\"example2\" cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Primary Location</th>\n        <th>Secondary Location</th>\n        <th>Primary Mode</th>\n        <th>Secondary Mode</th>\n        <th>Customer Name</th>\n        <th>Unit/Plant</th>\n        <th>Annual QTY</th>\n        <th>Contract Signing Date</th>\n        <th>Days</th>\n        <th>Remaining Volume (Metric Tonne)</th>\n        <th>Enforcement Date</th>\n        <th>Auction type</th>\n        <th>FSA Number</th>\n        <th>FSA Date</th>\n        <th>Commencement Status</th>\n        <th>ANNEXURE-III</th>\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th>Subsidiary</th>\n       <th>Primary Location</th>\n       <th>Secondary Location</th>\n       <th>Primary Mode</th>\n       <th>Secondary Mode</th>\n       <th>Customer Name</th>\n       <th>Unit/Plant</th>\n       <th>Annual QTY</th>\n       <th>Contract Signing Date</th>\n       <th style=\"opacity:0\">Days</th>\n       <th>Remaining Volume (Metric Tonne)</th>\n       <th>Enforcement Date</th>\n       <th>Auction type</th>\n       <th>FSA Number</th>\n       <th>FSA Date</th>\n       <th>Commencement Status</th>\n       <th>ANNEXURE-III</th>\n\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d18}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.d4}}</td>\n        <td>{{track.d5}}</td>\n        <td>{{track.d6}}</td>\n        <td>{{track.d7}}</td>\n        <td>{{track.d8}}</td>\n        <td class=\"\">\n          <input type=\"text\" name=\"\"  [(ngModel)]='track.d16' value={{track.d16}}  style=\"width:50px !important\">\n        </td>\n        <td>{{parseint(track.d9/track.d16)}}</td>\n        <td>{{track.d10}}</td>\n        <td>{{track.d11}}</td>\n        <td>{{track.d12}}</td>\n        <td>{{track.d13}}</td>\n        <td>{{track.d14}}</td>\n        <td>{{track.d15}}</td>\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div *ngIf='display' class=\"container\"  style=\" overflow-x:auto;\">\n\n\n  <div class=\"row \" style=\"padding-top:20px\" >\n    <div class=\" col-md-4 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Contract</h2>\n      <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n    </div>\n    <div class=\" col-md-8 text-right\">\n\n      <!-- <div class=\"fileinput fileinput-new\" data-provides=\"fileinput\" >\n          <span class=\"btn  btn-file\"><span>Updated contract : </span><input type=\"file\" (change)=\"updated($event);\" accept=\".csv\"/></span>\n      </div> -->\n    </div>\n\n  </div>\n\n  <table class=\"stripe row-border order-column table-responsive \" id=\"example2\" cellspacing=\"0\" width=\"100%\" style=\"font-size:.8rem !important\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Primary Location</th>\n        <th>Customer-Plant-Mode</th>\n        <th>Annual QTY</th>\n        <th>Contract Signing Date</th>\n        <th>Days</th>\n        <th>Remaining Volume (Metric Tonne)</th>\n        <th>Auction type</th>\n        <th>Commencement Status</th>\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th>Subsidiary</th>\n       <th>Primary Location</th>\n       <th>Customer-Plant-Mode</th>\n       <th>Annual QTY</th>\n       <th>Contract Signing Date</th>\n       <th style=\"opacity:0\">Days</th>\n       <th>Remaining Volume (Metric Tonne)</th>\n       <th>Auction type</th>\n       <th>Commencement Status</th>\n\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.d7}}</td>\n        <td>{{track.d8}}</td>\n        <td class=\"\">\n          <input type=\"text\" name=\"\"  [(ngModel)]='track.d16' value={{track.d16}}  style=\" width:35px !important\">\n          &nbsp;\n          <i (click)=\"saveDayNo(track.d16,track.d17)\" style=\"cursor:pointer\" class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i>\n        </td>\n        <td>{{parseint(track.d9/track.d16)}}</td>\n        <td>{{track.d11}}</td>\n        <td>{{track.d14}}</td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -528,6 +529,7 @@ var TheContractComponent = (function () {
             temp = JSON.parse(temp);
             this.tracker = temp;
             this.display = true;
+            // console.log(this.tracker);
             this.ProjectService.emitContractData.subscribe(function (res) {
                 // console.log(res);
                 localStorage.setItem('contracts', JSON.stringify(res));
@@ -553,6 +555,14 @@ var TheContractComponent = (function () {
         console.log(this.formData);
         this.ProjectService.updateContract(this.formData);
     };
+    TheContractComponent.prototype.saveDayNo = function (day, id) {
+        console.log(day);
+        console.log(id);
+        this.formData = new FormData();
+        this.formData.append('cid', id);
+        this.formData.append('days', day);
+        this.ProjectService.updateContractDays(this.formData);
+    };
     return TheContractComponent;
 }());
 TheContractComponent = __decorate([
@@ -577,7 +587,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".box-radius{\n  \n  width: 100%;\n  border : 8px solid #525252;\n  border-radius: 15px;\n  margin: 10px;\n}\n.mode-text{\n  margin: 3%;\n  font-size: 2rem\n}\n", ""]);
 
 // exports
 
@@ -590,7 +600,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/summary-content/sm1/sm1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class=\"col-6\" style=\"max-height: 300px\">\n    <div *ngIf='!display'>\n      <h5>Data Not available</h5>\n    </div>\n    <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut width=\"300\" height=\"300\">a</canvas>\n\n  </div>\n  <div class=\" col-6\" style=\"height: 280px; overflow:auto\">\n    <!-- <p >Signed Amt. :  {{data1}}</p> -->\n    <p class=\"set1\">Remaining Amt. = {{data2}}</p>\n    <p class=\"set2\">Lifted Amt. = {{data3}}</p>\n\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class=\" col-md-12\" style=\"\">\n    <div class=\"box-radius text-center\" >\n      <div class=\"text-center\" style=\"background-color: #525252; color:white; height:50px; width:100%; margin:0 !important; font-size:1.7rem\"  >\n        <span> <i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i> Lifted Volume</span>\n      </div>\n      <br>\n      <span class=\"mode-text\">{{data3}}</span>\n\n      <i class=\"fa fa-train fa-5x\" aria-hidden=\"true\"></i> &nbsp; &nbsp; &nbsp;\n      <i class=\"fa fa-truck fa-5x\" aria-hidden=\"true\"></i>\n\n      <span class=\"mode-text\">{{data4}}</span>\n      <div class=\"progress\">\n        <div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" [style.width.%]='data5'></div>\n      </div>\n\n      <div class=\"text-center\" style=\"background-color: #525252; color:white; height:80px; width:100%; margin:0 !important; font-size:1.5rem\"  >\n        <span style=\"font-size:1rem\" >Lifted : </span> {{data2}} - {{data5}}%  <br> <span style=\"font-size:1rem\" >Total  :</span>  {{data1}}\n      </div>\n\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -601,8 +611,6 @@ module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sm1Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__ = __webpack_require__("../../../../../src/app/service/ProjectService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__("../../../../chart.js/src/chart.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -614,7 +622,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var Sm1Component = (function () {
     function Sm1Component(ProjectService) {
         var _this = this;
@@ -624,64 +631,33 @@ var Sm1Component = (function () {
         this.ProjectService.emitPSUData.subscribe(function (res) {
             console.log(res.data);
             _this.data1 = res.data[res.id].vol[0][1];
-            _this.data2 = res.data[res.id].vol[2][1];
-            _this.data3 = res.data[res.id].vol[1][1];
+            _this.data2 = res.data[res.id].vol[1][1];
+            _this.data3 = res.data[res.id].vol[2][1];
+            _this.data4 = res.data[res.id].vol[3][1];
+            _this.data5 = res.data[res.id].vol[4][1];
             if (_this.data1 == 0) {
                 _this.display = false;
             }
             else {
                 _this.display = true;
-                _this.getGraph();
+                // this.getGraph();
             }
         });
     }
     Sm1Component.prototype.ngOnInit = function () {
     };
-    Sm1Component.prototype.getGraph = function () {
-        this.donutCtx = this.donut.nativeElement.getContext('2d');
-        this.myChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js___default.a(this.donutCtx, {
-            type: 'doughnut',
-            data: {
-                labels: this.labels,
-                datasets: [{
-                        data: [this.data2, this.data3],
-                        backgroundColor: ['#025AA5', '#8e8e8e']
-                    },
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    display: false,
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Signed Amt ' + this.data1,
-                },
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                }
-            }
-        });
-    };
     return Sm1Component;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('donut'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
-], Sm1Component.prototype, "donut", void 0);
 Sm1Component = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-sm1',
         template: __webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm1/sm1.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm1/sm1.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _a || Object])
 ], Sm1Component);
 
-var _a, _b;
+var _a;
 //# sourceMappingURL=sm1.component.js.map
 
 /***/ }),
@@ -694,7 +670,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".set1 {\n\n  text-align: center;\n  border-bottom: 4px solid #025AA5;\n  }\n\n.set2 {\n\n  text-align: center;\n  border-bottom: 4px solid #8e8e8e;\n  }\n", ""]);
+exports.push([module.i, ".box-radius{\n\n  width: 100%;\n  border : 6px solid #525252;\n  border-radius: 15px;\n  margin: 10px;\n  /*color: #469846;*/\n}\n.text-style1{\n  font-size: 1.4rem;\n  background-color: #469846;\n  color: white;\n  border-radius: 15px;\n}\n.text-style2{\n  font-size: 1.4rem;\n  background-color: #0275D8;\n  color: white;\n  border-radius: 15px;\n}\n.text-style3{\n  font-size: 1.4rem;\n  background-color: #D9534F;\n  color: white;\n  border-radius: 15px;\n}\n", ""]);
 
 // exports
 
@@ -707,7 +683,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/summary-content/sm2/sm2.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"row justify-content-md-center\" >\n\n  <div class=\"col-6\" style=\"max-height: 300px\">\n    <div *ngIf='!display'>\n      <h5>Data Not available</h5>\n    </div>\n    <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut width=\"300\" height=\"300\">a</canvas>\n\n\n  </div>\n  <div class=\" col-6\" style=\"height: 280px; overflow:auto\">\n    <!-- <p >Signed Amt. :  {{data1}}</p> -->\n    <p class=\"set1\">{{label2}} : {{data2}}</p>\n    <p class=\"set2\">{{label3}} : {{data3}}</p>\n\n  </div>\n\n</div>\n"
+module.exports = "<div  class=\"row justify-content-md-center\" >\n\n  <div class=\"col-12\" >\n    <div class=\"box-radius text-center\">\n      <div class=\"text-center\"  style=\"height:1.5rem; width:100%; color: white; background-color: #525252; font-size:1.1rem \"  >Results Communicated vs Challenged</div>\n      <b>Collected : </b> <span class=\"text-style1\" > &nbsp; {{data1}} &nbsp; </span><br>\n      <b>Communicated : </b> <span class=\"text-style2\" > &nbsp; {{data2}} &nbsp; </span><br>\n      <b>Challenged : </b> <span class=\"text-style3\" > &nbsp; {{data3}} &nbsp; </span> &nbsp; <b> - {{data4}}% </b> <br>\n\n      <div class=\"progress\">\n        <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-danger\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" [style.width.%]='data4'></div>\n      </div>\n\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -718,8 +694,6 @@ module.exports = "<div  class=\"row justify-content-md-center\" >\n\n  <div clas
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sm2Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__ = __webpack_require__("../../../../../src/app/service/ProjectService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__("../../../../chart.js/src/chart.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -729,7 +703,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 var Sm2Component = (function () {
@@ -743,6 +716,7 @@ var Sm2Component = (function () {
             _this.data1 = res.data[res.id].results[0][1];
             _this.data2 = res.data[res.id].results[1][1];
             _this.data3 = res.data[res.id].results[2][1];
+            _this.data4 = res.data[res.id].results[3][1];
             _this.label1 = res.data[res.id].results[0][0];
             _this.label2 = res.data[res.id].results[1][0];
             _this.label3 = res.data[res.id].results[2][0];
@@ -751,57 +725,23 @@ var Sm2Component = (function () {
             }
             else {
                 _this.display = true;
-                _this.getGraph();
             }
         });
     }
     Sm2Component.prototype.ngOnInit = function () {
     };
-    Sm2Component.prototype.getGraph = function () {
-        this.donutCtx = this.donut.nativeElement.getContext('2d');
-        this.myChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js___default.a(this.donutCtx, {
-            type: 'doughnut',
-            data: {
-                labels: [this.label2, this.label3],
-                datasets: [{
-                        data: [this.data2, this.data3],
-                        backgroundColor: ['#025AA5', '#8e8e8e']
-                    },
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    display: false,
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: this.label1 + ' ' + this.data1,
-                },
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                }
-            }
-        });
-    };
     return Sm2Component;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('donut'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
-], Sm2Component.prototype, "donut", void 0);
 Sm2Component = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-sm2',
         template: __webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm2/sm2.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm2/sm2.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _a || Object])
 ], Sm2Component);
 
-var _a, _b;
+var _a;
 //# sourceMappingURL=sm2.component.js.map
 
 /***/ }),
@@ -814,7 +754,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".box-radius{\n\n  width: 98%;\n  border : 4px solid #525252;\n  border-radius: 15px;\n  margin: 10px;\n  /*color: #469846;*/\n}\n", ""]);
 
 // exports
 
@@ -827,7 +767,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/summary-content/sm3/sm3.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class=\"col-6\" style=\"max-height: 300px\">\n    <div *ngIf='!display'>\n      <h5>Data Not available</h5>\n    </div>\n    <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut width=\"300\" height=\"300\">a</canvas>\n\n\n  </div>\n  <div class=\" col-6\" style=\"height: 280px; overflow:auto\">\n    <!-- <p >Signed Amt. :  {{data1}}</p> -->\n    <p class=\"set1\">{{label1}} : {{data1}}</p>\n    <p class=\"set2\">{{label2}} : {{data2}}</p>\n    <p class=\"set3\">{{label3}} : {{data3}}</p>\n    <p class=\"set4\">{{label4}} : {{data4}}</p>\n\n\n  </div>\n\n</div>\n"
+module.exports = "<div  class=\"box-radius text-center\">\n  <div class=\"text-center\"  style=\"height:1.9rem; width:100%; color: white; background-color: #525252; font-size:1.5rem \"  >Total contracts vs status</div>\n  <br>\n  <div class=\"row justify-content-md-center\" >\n\n    <div class=\"col-7\" style=\"max-height: 400px; z-index:999 !important\">\n      <div *ngIf='!display'>\n        <h5>Data Not available</h5>\n      </div>\n      <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut  height=\"250\" style=\" z-index:999 !important\" >a</canvas>\n\n\n    </div>\n    <div class=\" col-5\" style=\"height: 400px; overflow:auto\">\n      <!-- <p >Signed Amt. :  {{data1}}</p> -->\n      <b>\n      <p class=\"set1\">{{label1}} : {{data1}}</p>\n      <p class=\"set2\">{{label2}} : {{data2}}</p>\n      <p class=\"set3\">{{label3}} : {{data3}}</p>\n      <p class=\"set4\">{{label4}} : {{data4}}</p>\n      <br>\n      <p class=\"\" style=\"font-size:1.7rem\" > {{data5}} Total contracts</p>  </b>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -889,7 +829,7 @@ var Sm3Component = (function () {
                 labels: [this.label1, this.label2, this.label3, this.label4],
                 datasets: [{
                         data: [this.data1, this.data2, this.data3, this.data4],
-                        backgroundColor: ['#025AA5', '#8e8e8e', '#cccccc', '#5683a9']
+                        backgroundColor: ['#0275D8', '#469846', '#8E8E8E', '#F0AD4E']
                     },
                 ]
             },
@@ -901,7 +841,6 @@ var Sm3Component = (function () {
                 },
                 title: {
                     display: true,
-                    text: 'Total ' + this.label5 + ' ' + this.data5,
                 },
                 animation: {
                     animateScale: true,
@@ -938,7 +877,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".box-radius{\n\n  width: 100%;\n  border : 4px solid #525252;\n  border-radius: 15px;\n  margin: 10px;\n  /*color: #469846;*/\n}\n", ""]);
 
 // exports
 
@@ -951,7 +890,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/summary-content/sm4/sm4.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class=\"col-6\" style=\"max-height: 300px\">\n    <div *ngIf='!display'>\n      <h5>Data Not available</h5>\n    </div>\n    <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut width=\"300\" height=\"300\">a</canvas>\n\n  </div>\n  <div class=\" col-6\" style=\"height: 280px; overflow:auto\">\n    <!-- <p >Signed Amt. :  {{data1}}</p> -->\n    <p class=\"set1\">{{label1}} : {{data1}}</p>\n    <p class=\"set2\">{{label2}} : {{data2}}</p>\n\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"box-radius\" style=\"\">\n  <div class=\"row  justify-content-md-center\" >\n    <div class=\"col-6 text-center\" >\n     <b> <span style=\"background-color:#FFCA2B\" > &nbsp; {{data1}} &nbsp; </span><br>\n      Communicated <br> </b>\n    </div>\n    <div class=\"col-6  text-center\" >\n      <b> <span style=\"background-color:#FFCA2B\" > &nbsp; {{data2}} - {{data3}}%  &nbsp;</span><br>\n      SLA Break <br> </b>\n    </div>\n\n    <div class=\"col-12\" >\n      <div class=\"progress\">\n        <div class=\"progress-bar progress-bar-striped progress-bar-animated  bg-warning\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" [style.width.%]='data3'></div>\n      </div>\n\n    <div class=\"text-center\"  style=\"height:1.5rem; width:100%; color: white; background-color: #525252; font-size:1.1rem \"  >Results Communicated vs SLA break</div>\n\n    </div>\n\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -960,6 +899,88 @@ module.exports = "<div class=\"row justify-content-md-center\" >\n\n  <div class
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sm4Component; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__ = __webpack_require__("../../../../../src/app/service/ProjectService.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Sm4Component = (function () {
+    function Sm4Component(ProjectService) {
+        var _this = this;
+        this.ProjectService = ProjectService;
+        this.labels = ['Lifted', 'Remaining'];
+        this.display = false;
+        this.ProjectService.emitPSUData.subscribe(function (res) {
+            // console.log(res.data);
+            _this.data1 = res.data[res.id].slabreak[0][1];
+            _this.data2 = res.data[res.id].slabreak[1][1];
+            _this.data3 = res.data[res.id].slabreak[2][1];
+            _this.label1 = res.data[res.id].slabreak[0][0];
+            _this.label2 = res.data[res.id].slabreak[1][0];
+            if (_this.data1 == 0) {
+                _this.display = false;
+            }
+            else {
+                _this.display = true;
+            }
+        });
+    }
+    Sm4Component.prototype.ngOnInit = function () {
+    };
+    return Sm4Component;
+}());
+Sm4Component = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-sm4',
+        template: __webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm4/sm4.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm4/sm4.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _a || Object])
+], Sm4Component);
+
+var _a;
+//# sourceMappingURL=sm4.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".box-radius{\n\n  width: 98%;\n  border : 4px solid #525252;\n  border-radius: 15px;\n  margin: 10px;\n  /*color: #469846;*/\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div  class=\"box-radius text-center\">\n  <div class=\"text-center\"  style=\"height:1.9rem; width:100%; color: white; background-color: #525252; font-size:1.5rem \"  >Grade Slippage</div>\n  <br>\n  <div class=\"row justify-content-md-center\" >\n\n    <div class=\"col-7\" style=\"max-height: 400px; z-index:999 !important\">\n      <div *ngIf='!display'>\n        <h5>Data Not available</h5>\n      </div>\n      <canvas [ngClass]=\" display ?'opacityOne':'opacityZero'\" class=\"graph\" #donut  height=\"230\" style=\" z-index:999 !important\" >a</canvas>\n\n\n    </div>\n    <div class=\" col-5\" style=\"height: 400px; overflow:auto\">\n      <!-- <p >Signed Amt. :  {{data1}}</p> -->\n      <b>\n      <p class=\"set1\">{{label1}} : {{data1}} - {{p1}}%</p>\n      <p class=\"set2\">{{label2}} : {{data2}} - {{p2}}%</p>\n      <p class=\"set3\">{{label3}} : {{data3}} - {{p3}}%</p>\n      <p class=\"set4\">{{label4}} : {{data4}} - {{p4}}%</p>\n      <p class=\"set5\">{{label5}} : {{data5}} - {{p5}}%</p>\n      <p class=\"set6\">{{label6}} : {{data6}} - {{p6}}%</p>\n      <p class=\"set7\">{{label7}} : {{data7}} - {{p7}}%</p>\n\n      <br>\n      <!-- <p class=\"\" style=\"font-size:1.7rem\" > {{data5}} Total contracts</p> -->\n      </b>\n    </div>\n\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sm5Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__ = __webpack_require__("../../../../../src/app/service/ProjectService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__("../../../../chart.js/src/chart.js");
@@ -976,19 +997,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var Sm4Component = (function () {
-    function Sm4Component(ProjectService) {
+var Sm5Component = (function () {
+    function Sm5Component(ProjectService) {
         var _this = this;
         this.ProjectService = ProjectService;
         this.labels = ['Lifted', 'Remaining'];
         this.display = false;
         this.ProjectService.emitPSUData.subscribe(function (res) {
             // console.log(res.data);
-            _this.data1 = res.data[res.id].slabreak[0][1];
-            _this.data2 = res.data[res.id].slabreak[1][1];
-            _this.label1 = res.data[res.id].slabreak[0][0];
-            _this.label2 = res.data[res.id].slabreak[1][0];
-            if (_this.data1 == 0) {
+            _this.data1 = res.data[res.id].slipage[0][1];
+            _this.data2 = res.data[res.id].slipage[1][1];
+            _this.data3 = res.data[res.id].slipage[2][1];
+            _this.data4 = res.data[res.id].slipage[3][1];
+            _this.data5 = res.data[res.id].slipage[4][1];
+            _this.data6 = res.data[res.id].slipage[5][1];
+            _this.data7 = res.data[res.id].slipage[6][1];
+            _this.label1 = res.data[res.id].slipage[0][0];
+            _this.label2 = res.data[res.id].slipage[1][0];
+            _this.label3 = res.data[res.id].slipage[2][0];
+            _this.label4 = res.data[res.id].slipage[3][0];
+            _this.label5 = res.data[res.id].slipage[4][0];
+            _this.label6 = res.data[res.id].slipage[5][0];
+            _this.label7 = res.data[res.id].slipage[6][0];
+            _this.p1 = res.data[res.id].slipage[0][2];
+            _this.p2 = res.data[res.id].slipage[1][2];
+            _this.p3 = res.data[res.id].slipage[2][2];
+            _this.p4 = res.data[res.id].slipage[3][2];
+            _this.p5 = res.data[res.id].slipage[4][2];
+            _this.p6 = res.data[res.id].slipage[5][2];
+            _this.p7 = res.data[res.id].slipage[6][2];
+            if (_this.data5 == 0) {
                 _this.display = false;
             }
             else {
@@ -997,17 +1035,17 @@ var Sm4Component = (function () {
             }
         });
     }
-    Sm4Component.prototype.ngOnInit = function () {
+    Sm5Component.prototype.ngOnInit = function () {
     };
-    Sm4Component.prototype.getGraph = function () {
+    Sm5Component.prototype.getGraph = function () {
         this.donutCtx = this.donut.nativeElement.getContext('2d');
         this.myChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js___default.a(this.donutCtx, {
             type: 'doughnut',
             data: {
-                labels: [this.label1, this.label2],
+                labels: [this.label1, this.label2, this.label3, this.label4, this.label5, this.label6, this.label7],
                 datasets: [{
-                        data: [this.data1, this.data2],
-                        backgroundColor: ['#025AA5', '#8e8e8e']
+                        data: [this.data1, this.data2, this.data3, this.data4, this.data5, this.data6, this.data7],
+                        backgroundColor: ['#0275D8', '#469846', '#8E8E8E', '#F0AD4E', '#d9534f', '#795548', '#673ab7']
                     },
                 ]
             },
@@ -1019,7 +1057,6 @@ var Sm4Component = (function () {
                 },
                 title: {
                     display: true,
-                    text: this.label1 + ' ' + this.data1,
                 },
                 animation: {
                     animateScale: true,
@@ -1028,83 +1065,22 @@ var Sm4Component = (function () {
             }
         });
     };
-    return Sm4Component;
+    return Sm5Component;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('donut'),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
-], Sm4Component.prototype, "donut", void 0);
-Sm4Component = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-sm4',
-        template: __webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm4/sm4.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm4/sm4.component.css")]
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _b || Object])
-], Sm4Component);
-
-var _a, _b;
-//# sourceMappingURL=sm4.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  sm5 works!\n</p>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sm5Component; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var Sm5Component = (function () {
-    function Sm5Component() {
-    }
-    Sm5Component.prototype.ngOnInit = function () {
-    };
-    return Sm5Component;
-}());
+], Sm5Component.prototype, "donut", void 0);
 Sm5Component = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-sm5',
         template: __webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/the-summary/summary-content/sm5/sm5.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_ProjectService__["a" /* ProjectService */]) === "function" && _b || Object])
 ], Sm5Component);
 
+var _a, _b;
 //# sourceMappingURL=sm5.component.js.map
 
 /***/ }),
@@ -1117,7 +1093,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".height400{\n  max-height: 400px;\n  overflow: auto;\n  padding-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, ".height400{\n  max-height: 570px;\n  overflow: auto;\n}\n", ""]);
 
 // exports
 
@@ -1130,7 +1106,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/summary-content/summary-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" >\n\n  <div id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">\n    <div class=\"row justify-content-md-center\" >\n\n      <div class=\"col-md-6 height400\" >\n        <div class=\"card\">\n          <div class=\"card-header\" role=\"tab\" id=\"headingOne\">\n            <h5 class=\"mb-0\">\n              <a data-toggle=\"collapse\"  href=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n                Volume signed v/s lifted\n              </a>\n            </h5>\n          </div>\n\n          <div id=\"collapseOne\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingOne\">\n            <div class=\"card-block\">\n              <app-sm1></app-sm1>\n\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-md-6 height400\" >\n        <div class=\"card\">\n          <div class=\"card-header\" role=\"tab\" id=\"headingTwo\">\n            <h5 class=\"mb-0\">\n              <a class=\"collapsed\" data-toggle=\"collapse\"  href=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n                Results desclared v/s challanged\n              </a>\n            </h5>\n          </div>\n          <div id=\"collapseTwo\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingTwo\">\n            <div class=\"card-block\">\n              <app-sm2></app-sm2>\n\n            </div>\n          </div>\n        </div>\n\n      </div>\n\n      <div class=\"col-md-6 height400\" >\n        <div class=\"card\">\n          <div class=\"card-header\" role=\"tab\" id=\"headingThree\">\n            <h5 class=\"mb-0\">\n              <a class=\"collapsed\" data-toggle=\"collapse\"  href=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">\n                Total contracts v/s status\n              </a>\n            </h5>\n          </div>\n          <div id=\"collapseThree\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingThree\">\n            <div class=\"card-block\">\n              <app-sm3></app-sm3>\n\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-md-6 height400\" >\n        <div class=\"card\">\n          <div class=\"card-header\" role=\"tab\" id=\"headingFour\">\n            <h5 class=\"mb-0\">\n              <a class=\"collapsed\" data-toggle=\"collapse\"  href=\"#collapseFour\" aria-expanded=\"false\" aria-controls=\"collapseFour\">\n                SLA Break\n              </a>\n            </h5>\n          </div>\n          <div id=\"collapseFour\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingFour\">\n            <div class=\"card-block\">\n              <app-sm4></app-sm4>\n\n            </div>\n          </div>\n        </div>\n      </div>\n\n\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\" >\n\n  <div id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">\n\n  <div class=\"row justify-content-md-center\" >\n    <div class=\"col-md-6\" >\n      <app-sm1></app-sm1>\n    </div>\n    <div class=\"col-md-6\" >\n      <div class=\"row justify-content-md-center\" >\n        <div  class=\"col-md-12\" >\n          <app-sm2></app-sm2>\n        </div>\n        <div  class=\"col-md-12\" >\n          <app-sm4></app-sm4>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-md-center\" >\n\n    <div class=\"col-md-6 height400\" >\n      <app-sm3></app-sm3>\n    </div>\n\n    <div class=\"col-md-6 height400\" >\n      <app-sm5></app-sm5>\n    </div>\n\n  </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1206,7 +1182,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-summary/the-summary.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" >\n\n  <div class=\"row \" style=\"padding:30px\" >\n    <div class=\" col-md-6 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Summary {{psu}}</h2>\n      <!-- <p style=\"color:grey\"> <i> last updated : 12/12/17 track</i></p> -->\n      <br>\n      <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Select subsidiary\n        </button>\n        <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\" style=\"padding-right:2px !important\">\n          <a *ngFor='let psu of PSUArray' class=\"dropdown-item\"  (click)=\"psuSummary(psu._id, psu.name)\">{{psu.name}}</a>\n          <!-- <a class=\"dropdown-item\"  (click)=\"psuSummary('1')\">SECL</a>\n          <a class=\"dropdown-item\"  (click)=\"psuSummary('2')\">MCL</a>\n          <a class=\"dropdown-item\"  (click)=\"psuSummary('3')\">NCL</a>\n          <a class=\"dropdown-item\"  (click)=\"psuSummary('4')\">WCL</a>\n          <a class=\"dropdown-item\"  (click)=\"psuSummary('5')\">CCL</a> -->\n\n        </div>\n      </div>\n    </div>\n\n    <div class=\" col-md-8 \">\n    </div>\n\n\n  </div>\n\n  <router-outlet></router-outlet>\n\n</div>\n"
+module.exports = "<div class=\"container\" >\n\n  <div class=\"row \" style=\"padding-top:20px\" >\n    <div class=\" col-md-6 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Summary {{psu}}</h2>\n      <br>\n    </div>\n\n    <div class=\" col-md-6 \" style=\"float:right\" >\n      <div class=\"dropdown\"style=\"float:right\">\n        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Select subsidiary\n        </button>\n        <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\" style=\"padding-right:2px !important\">\n          <a *ngFor='let psu of PSUArray' class=\"dropdown-item\"  (click)=\"psuSummary(psu._id, psu.name)\">{{psu.name}}</a>\n        </div>\n      </div>\n    </div>\n\n\n  </div>\n\n  <router-outlet></router-outlet>\n\n</div>\n"
 
 /***/ }),
 
@@ -1265,7 +1241,7 @@ $(document).ready(function() {
 
     $('#example tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input style="width:10px !important" type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input style="width:10px !important" type="text" placeholder="" />' );
     } );
 
 
@@ -1279,7 +1255,7 @@ $(document).ready(function() {
 
     $('#example2 tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input style="width:65px" type="text" placeholder="" />' );
     } );
 
 
@@ -1325,7 +1301,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/the-table/the-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;overflow-y:hidden\">\n  <h2>Tracker</h2>\n  <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n  <br>\n  <div class=\"card\" >\n    <div class=\"card-header\">\n\n      <button class=\"btn btn-primary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample\" aria-expanded=\"false\" aria-controls=\"collapseExample\">\n        Filter\n      </button>\n      &nbsp;&nbsp;&nbsp;&nbsp;\n      <b> {{date1}} &nbsp; {{date2}} </b>\n\n    </div>\n\n    <div class=\"collapse\" id=\"collapseExample\" >\n      <div class=\"card-block\">\n\n        <!-- <div class=\"form-group row\" style=\"padding-top:10px\" >\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Initial date</label>\n          <div class=\"col-6\">\n            <input class=\"form-control\" type=\"date\" id=\"example-datetime-local-input\" [(ngModel)]='date1' >\n          </div>\n        </div> -->\n\n        <div class=\"form-group row\">\n          <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Select month</label>\n          <div class=\"col-4\">\n            <input class=\"form-control\" type=\"month\" id=\"example-datetime-local-input\"  [(ngModel)]='date2' format=\"dd/MM/yyyy\">\n          </div>\n          <div class=\"3\">\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"searchByDate()\" >Search</button>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n  <table class=\"stripe row-border order-column\" id=\"example\"   cellspacing=\"0\" width=\"100%\">\n    <thead  style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Location</th>\n        <th>Mode - Customer - Plant</th>\n        <th>Total Lifted</th>\n        <th>Days</th>\n        <th>Total Remaining</th>\n        <th>Status</th>\n        <th>1</th>\n        <th>2</th>\n        <th>3</th>\n        <th>4</th>\n        <th>5</th>\n        <th>6</th>\n        <th>7</th>\n        <th>8</th>\n        <th>9</th>\n        <th>10</th>\n        <th>11</th>\n        <th>12</th>\n        <th>13</th>\n        <th>14</th>\n        <th>15</th>\n        <th>16</th>\n        <th>17</th>\n        <th>18</th>\n        <th>19</th>\n        <th>20</th>\n        <th>21</th>\n        <th>22</th>\n        <th>23</th>\n        <th>24</th>\n        <th>25</th>\n        <th>26</th>\n        <th>27</th>\n        <th>28</th>\n        <th>29</th>\n        <th>30</th>\n        <th>31</th>\n\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th style=\"opacity:0;  cursor:default;\">Subsidiary</th>\n       <th style=\"opacity:0;  cursor:default;\">Location</th>\n       <th style=\"opacity:0;  cursor:default;\">Mode - Customer - Plant</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Lifted</th>\n       <th style=\"opacity:0;  cursor:default;\">Days</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Remaining</th>\n       <th style=\"opacity:0;  cursor:default;\">Status</th>\n       <th style=\"opacity:0;  cursor:default;\">1</th>\n       <th style=\"opacity:0;  cursor:default;\">2</th>\n       <th style=\"opacity:0;  cursor:default;\">3</th>\n       <th style=\"opacity:0;  cursor:default;\">4</th>\n       <th style=\"opacity:0;  cursor:default;\">5</th>\n       <th style=\"opacity:0;  cursor:default;\">6</th>\n       <th style=\"opacity:0;  cursor:default;\">7</th>\n       <th style=\"opacity:0;  cursor:default;\">8</th>\n       <th style=\"opacity:0;  cursor:default;\">9</th>\n       <th style=\"opacity:0;  cursor:default;\">10</th>\n       <th style=\"opacity:0;  cursor:default;\">11</th>\n       <th style=\"opacity:0;  cursor:default;\">12</th>\n       <th style=\"opacity:0;  cursor:default;\">13</th>\n       <th style=\"opacity:0;  cursor:default;\">14</th>\n       <th style=\"opacity:0;  cursor:default;\">15</th>\n       <th style=\"opacity:0;  cursor:default;\">16</th>\n       <th style=\"opacity:0;  cursor:default;\">17</th>\n       <th style=\"opacity:0;  cursor:default;\">18</th>\n       <th style=\"opacity:0;  cursor:default;\">19</th>\n       <th style=\"opacity:0;  cursor:default;\">20</th>\n       <th style=\"opacity:0;  cursor:default;\">21</th>\n       <th style=\"opacity:0;  cursor:default;\">22</th>\n       <th style=\"opacity:0;  cursor:default;\">23</th>\n       <th style=\"opacity:0;  cursor:default;\">24</th>\n       <th style=\"opacity:0;  cursor:default;\">25</th>\n       <th style=\"opacity:0;  cursor:default;\">26</th>\n       <th style=\"opacity:0;  cursor:default;\">27</th>\n       <th style=\"opacity:0;  cursor:default;\">28</th>\n       <th style=\"opacity:0;  cursor:default;\">29</th>\n       <th style=\"opacity:0;  cursor:default;\">30</th>\n       <th style=\"opacity:0;  cursor:default;\">31</th>\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.lifted}}</td>\n        <td class=\"\">\n          <input style=\"width: 28px\" type=\"text\" name=\"\"   [(ngModel)]='track.d8' value={{track.d8}}>\n        </td>\n        <td>{{parseint(track.needed/track.d8)}}</td>\n\n        <td>\n          <span *ngIf=\"track.status == 'Good'\" style=\"background-color:#b5eaa8\"> {{track.status}} </span>\n          <span *ngIf=\"track.status != 'Good'\" style=\"background-color:#f1beba\"> {{track.status}} </span>\n        </td>\n\n        <!-- b5eaa8 -->\n        <td>{{track.d1d}}</td>\n        <td>{{track.d2d}}</td>\n        <td>{{track.d3d}}</td>\n        <td>{{track.d4d}}</td>\n        <td>{{track.d5d}}</td>\n        <td>{{track.d6d}}</td>\n        <td>{{track.d7d}}</td>\n        <td>{{track.d8d}}</td>\n        <td>{{track.d9d}}</td>\n        <td>{{track.d10d}}</td>\n        <td>{{track.d11d}}</td>\n        <td>{{track.d12d}}</td>\n        <td>{{track.d13d}}</td>\n        <td>{{track.d14d}}</td>\n        <td>{{track.d15d}}</td>\n        <td>{{track.d16d}}</td>\n        <td>{{track.d17d}}</td>\n        <td>{{track.d18d}}</td>\n        <td>{{track.d19d}}</td>\n        <td>{{track.d20d}}</td>\n        <td>{{track.d21d}}</td>\n        <td>{{track.d22d}}</td>\n        <td>{{track.d23d}}</td>\n        <td>{{track.d24d}}</td>\n        <td>{{track.d25d}}</td>\n        <td>{{track.d26d}}</td>\n        <td>{{track.d27d}}</td>\n        <td>{{track.d28d}}</td>\n        <td>{{track.d29d}}</td>\n        <td>{{track.d30d}}</td>\n        <td>{{track.d31d}}</td>\n\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div *ngIf='display' class=\"container-fluid\"  style=\" overflow-x:auto;overflow-y:hidden\">\n\n  <div class=\"row \" style=\"padding-top:20px\" >\n    <div class=\" col-md-6 text-left\">\n      <h2 style=\"margin-bottom:0px; \">Tracker  <span style=\"font-size: 1.0rem\" > {{cachemonth}} </span> </h2>\n      <p style=\"color:grey\"> <i> last updated : 12/12/17 </i></p>\n      <br>\n    </div>\n\n    <div class=\" col-md-6 \" style=\"float:right\" >\n      <div class=\"form-group row\">\n        <label for=\"example-datetime-local-input\" class=\"col-2 col-form-label text-center\">Select month</label>\n        <div class=\"col-4\">\n          <input class=\"form-control\" type=\"month\" id=\"example-datetime-local-input\"  [(ngModel)]='date2' format=\"dd/MM/yyyy\">\n        </div>\n        <div class=\"3\">\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"searchByDate()\" >Search</button>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <div style=\"padding-bottom:50px;\">\n  </div>\n\n  <table class=\"stripe row-border order-column\" id=\"example\"   cellspacing=\"0\" width=\"100%\"   style=\"font-size:.8rem !important\">\n    <thead style=\"background-color:#dcefff\">\n      <tr>\n\n        <th>Subsidiary</th>\n        <th>Location</th>\n        <th>Customer - Plant - Mode</th>\n        <th>Lifted</th>\n        <th>Days</th>\n        <th>Monthly Remaining</th>\n        <th>Status</th>\n        <th>1</th>\n        <th>2</th>\n        <th>3</th>\n        <th>4</th>\n        <th>5</th>\n        <th>6</th>\n        <th>7</th>\n        <th>8</th>\n        <th>9</th>\n        <th>10</th>\n        <th>11</th>\n        <th>12</th>\n        <th>13</th>\n        <th>14</th>\n        <th>15</th>\n        <th>16</th>\n        <th>17</th>\n        <th>18</th>\n        <th>19</th>\n        <th>20</th>\n        <th>21</th>\n        <th>22</th>\n        <th>23</th>\n        <th>24</th>\n        <th>25</th>\n        <th>26</th>\n        <th>27</th>\n        <th>28</th>\n        <th>29</th>\n        <th>30</th>\n        <th>31</th>\n\n\n      </tr>\n    </thead>\n    <tfoot>\n     <tr>\n\n       <th style=\"opacity:0;  cursor:default;\">Subsidiary</th>\n       <th style=\"opacity:0;  cursor:default;\">Location</th>\n       <th style=\"opacity:0;  cursor:default;\">Mode - Customer - Plant</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Lifted</th>\n       <th style=\"opacity:0;  cursor:default;\">Days</th>\n       <th style=\"opacity:0;  cursor:default;\">Total Remaining</th>\n       <th style=\"opacity:0;  cursor:default;\">Status</th>\n       <th style=\"opacity:0;  cursor:default;\">1</th>\n       <th style=\"opacity:0;  cursor:default;\">2</th>\n       <th style=\"opacity:0;  cursor:default;\">3</th>\n       <th style=\"opacity:0;  cursor:default;\">4</th>\n       <th style=\"opacity:0;  cursor:default;\">5</th>\n       <th style=\"opacity:0;  cursor:default;\">6</th>\n       <th style=\"opacity:0;  cursor:default;\">7</th>\n       <th style=\"opacity:0;  cursor:default;\">8</th>\n       <th style=\"opacity:0;  cursor:default;\">9</th>\n       <th style=\"opacity:0;  cursor:default;\">10</th>\n       <th style=\"opacity:0;  cursor:default;\">11</th>\n       <th style=\"opacity:0;  cursor:default;\">12</th>\n       <th style=\"opacity:0;  cursor:default;\">13</th>\n       <th style=\"opacity:0;  cursor:default;\">14</th>\n       <th style=\"opacity:0;  cursor:default;\">15</th>\n       <th style=\"opacity:0;  cursor:default;\">16</th>\n       <th style=\"opacity:0;  cursor:default;\">17</th>\n       <th style=\"opacity:0;  cursor:default;\">18</th>\n       <th style=\"opacity:0;  cursor:default;\">19</th>\n       <th style=\"opacity:0;  cursor:default;\">20</th>\n       <th style=\"opacity:0;  cursor:default;\">21</th>\n       <th style=\"opacity:0;  cursor:default;\">22</th>\n       <th style=\"opacity:0;  cursor:default;\">23</th>\n       <th style=\"opacity:0;  cursor:default;\">24</th>\n       <th style=\"opacity:0;  cursor:default;\">25</th>\n       <th style=\"opacity:0;  cursor:default;\">26</th>\n       <th style=\"opacity:0;  cursor:default;\">27</th>\n       <th style=\"opacity:0;  cursor:default;\">28</th>\n       <th style=\"opacity:0;  cursor:default;\">29</th>\n       <th style=\"opacity:0;  cursor:default;\">30</th>\n       <th style=\"opacity:0;  cursor:default;\">31</th>\n     </tr>\n    </tfoot>\n    <tbody>\n\n      <tr *ngFor=\"let track of tracker  ;  let i = index \">\n\n        <td>{{track.d1}}</td>\n        <td>{{track.d2}}</td>\n        <td>{{track.d3}}</td>\n        <td>{{track.lifted}}</td>\n        <td class=\"\">\n          <input style=\"width: 28px\" type=\"text\" name=\"\"   [(ngModel)]='track.d8' value={{track.d8}}>\n        </td>\n        <td>{{parseint(track.needed/track.d8)}}</td>\n\n        <td>\n\n          <span *ngIf=\"calStatus(track.lifted,track.needed,track.d8) == 'Best'\" style=\"background-color:#c4b8f5\"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>\n          <span *ngIf=\"calStatus(track.lifted,track.needed,track.d8) == 'Good'\" style=\"background-color:#b5eaa8\"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>\n          <span *ngIf=\"calStatus(track.lifted,track.needed,track.d8) == 'Bad'\" style=\"background-color:#efac58\"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>\n          <span *ngIf=\"calStatus(track.lifted,track.needed,track.d8) == 'Worst'\" style=\"background-color:#e45b50\"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>\n        </td>\n\n        <!-- b5eaa8 -->\n        <td>{{track.d1d}}</td>\n        <td>{{track.d2d}}</td>\n        <td>{{track.d3d}}</td>\n        <td>{{track.d4d}}</td>\n        <td>{{track.d5d}}</td>\n        <td>{{track.d6d}}</td>\n        <td>{{track.d7d}}</td>\n        <td>{{track.d8d}}</td>\n        <td>{{track.d9d}}</td>\n        <td>{{track.d10d}}</td>\n        <td>{{track.d11d}}</td>\n        <td>{{track.d12d}}</td>\n        <td>{{track.d13d}}</td>\n        <td>{{track.d14d}}</td>\n        <td>{{track.d15d}}</td>\n        <td>{{track.d16d}}</td>\n        <td>{{track.d17d}}</td>\n        <td>{{track.d18d}}</td>\n        <td>{{track.d19d}}</td>\n        <td>{{track.d20d}}</td>\n        <td>{{track.d21d}}</td>\n        <td>{{track.d22d}}</td>\n        <td>{{track.d23d}}</td>\n        <td>{{track.d24d}}</td>\n        <td>{{track.d25d}}</td>\n        <td>{{track.d26d}}</td>\n        <td>{{track.d27d}}</td>\n        <td>{{track.d28d}}</td>\n        <td>{{track.d29d}}</td>\n        <td>{{track.d30d}}</td>\n        <td>{{track.d31d}}</td>\n\n\n      </tr>\n\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -1384,9 +1360,10 @@ var TheTableComponent = (function () {
         var y = d.getFullYear();
         this.month = y + '-' + m;
         // console.log(this.month);
+        localStorage.setItem('month', this.month);
         this.formData.append('monthdate', this.month);
         this.ProjectService.getTrackerByDate(this.formData);
-        // this.ProjectService.updateTracker(); 
+        // this.ProjectService.updateTracker();
     };
     TheTableComponent.prototype.ngOnDestroy = function () {
         localStorage.setItem('trackerFlag', '0');
@@ -1405,6 +1382,22 @@ var TheTableComponent = (function () {
         this.ProjectService.getTrackerByDate(formData1);
         //this.ProjectService.getContractByDate(formData);
         this.searchRefreshflag = true;
+    };
+    TheTableComponent.prototype.calStatus = function (lifted, needed, days) {
+        var act = needed / days;
+        var diff = lifted - act;
+        var per20 = .2;
+        var per10 = .1;
+        if (diff >= (act * per20)) {
+            return "Best";
+        }
+        else if (diff > (-1 * act * per10)) {
+            return 'Good';
+        }
+        else if (diff > (-1 * act * per20)) {
+            return "Bad";
+        }
+        return "Worst";
     };
     return TheTableComponent;
 }());
@@ -1643,7 +1636,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var APIService = (function () {
     function APIService(http) {
         this.http = http;
-        // projectURL: string = 'http://192.168.15.221:8000';  // actual ip is 221 at the end
+        // projectURL: string = 'http://192.168.15.221:8000';
         this.projectURL = 'http://qcitech.org:8081';
     }
     APIService.prototype.Login = function (data) {
@@ -1667,6 +1660,9 @@ var APIService = (function () {
     APIService.prototype.GetAllPSUSummary = function (data) {
         // console.log(data);
         return this.http.get(this.projectURL + '/getsubsidiarysummary', data).map(function (res) { return res.json(); });
+    };
+    APIService.prototype.UpdateDays = function (data) {
+        return this.http.post(this.projectURL + '/savecontractdays', data).map(function (res) { return res.json(); });
     };
     return APIService;
 }());
@@ -1720,12 +1716,11 @@ var ProjectService = (function () {
         this.month = y + '-' + m;
     }
     ProjectService.prototype.internetConnection = function () {
-        var _this = this;
         window.addEventListener('online', function () {
-            _this.toast('Please refresh', 'Online!');
+            // this.toast('Please refresh','Online!');
         });
         window.addEventListener('offline', function () {
-            _this.toast('Some components might not work', 'Offline!');
+            // this.toast('Some components might not work','Offline!');
         });
     };
     ProjectService.prototype.login = function (data) {
@@ -1839,6 +1834,22 @@ var ProjectService = (function () {
                 // console.log(res);
                 _this.emitSummaryData.emit(res);
                 _this.PSUData = res.data;
+            }
+            else { }
+        }, function (err) {
+            console.log(err);
+            _this.toast('Something went wrong. Please check logs ', 'Error!');
+        });
+    };
+    ProjectService.prototype.updateContractDays = function (data) {
+        var _this = this;
+        this.APIService.UpdateDays(data).subscribe(function (res) {
+            if (res.success) {
+                _this.getContract(1);
+                var formData = new FormData();
+                formData.append('monthdate', _this.month);
+                _this.getTrackerByDate(formData);
+                _this.toast('Please refresh', 'Data Updated!');
             }
             else { }
         }, function (err) {

@@ -1,38 +1,21 @@
 <div *ngIf='display' class="container-fluid"  style=" overflow-x:auto;overflow-y:hidden">
-  <h2>Tracker</h2>
-  <p style="color:grey"> <i> last updated : 12/12/17 </i></p>
-  <br>
-  <div class="card" >
-    <div class="card-header">
 
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Filter
-      </button>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <b> {{date1}} &nbsp; {{date2}} </b>
-
+  <div class="row " style="padding-top:20px" >
+    <div class=" col-md-6 text-left">
+      <h2 style="margin-bottom:0px; ">Tracker  <span style="font-size: 1.0rem" > {{cachemonth}} </span> </h2>
+      <p style="color:grey"> <i> last updated : 12/12/17 </i></p>
+      <br>
     </div>
 
-    <div class="collapse" id="collapseExample" >
-      <div class="card-block">
-
-        <!-- <div class="form-group row" style="padding-top:10px" >
-          <label for="example-datetime-local-input" class="col-2 col-form-label text-center">Initial date</label>
-          <div class="col-6">
-            <input class="form-control" type="date" id="example-datetime-local-input" [(ngModel)]='date1' >
-          </div>
-        </div> -->
-
-        <div class="form-group row">
-          <label for="example-datetime-local-input" class="col-2 col-form-label text-center">Select month</label>
-          <div class="col-4">
-            <input class="form-control" type="month" id="example-datetime-local-input"  [(ngModel)]='date2' format="dd/MM/yyyy">
-          </div>
-          <div class="3">
-            <button type="button" class="btn btn-primary" (click)="searchByDate()" >Search</button>
-          </div>
+    <div class=" col-md-6 " style="float:right" >
+      <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-2 col-form-label text-center">Select month</label>
+        <div class="col-4">
+          <input class="form-control" type="month" id="example-datetime-local-input"  [(ngModel)]='date2' format="dd/MM/yyyy">
         </div>
-
+        <div class="3">
+          <button type="button" class="btn btn-primary" (click)="searchByDate()" >Search</button>
+        </div>
       </div>
     </div>
 
@@ -41,16 +24,16 @@
   <div style="padding-bottom:50px;">
   </div>
 
-  <table class="stripe row-border order-column" id="example"   cellspacing="0" width="100%">
-    <thead  style="background-color:#dcefff">
+  <table class="stripe row-border order-column" id="example"   cellspacing="0" width="100%"   style="font-size:.8rem !important">
+    <thead style="background-color:#dcefff">
       <tr>
 
         <th>Subsidiary</th>
         <th>Location</th>
-        <th>Mode - Customer - Plant</th>
-        <th>Total Lifted</th>
+        <th>Customer - Plant - Mode</th>
+        <th>Lifted</th>
         <th>Days</th>
-        <th>Total Remaining</th>
+        <th>Monthly Remaining</th>
         <th>Status</th>
         <th>1</th>
         <th>2</th>
@@ -144,8 +127,11 @@
         <td>{{parseint(track.needed/track.d8)}}</td>
 
         <td>
-          <span *ngIf="track.status == 'Good'" style="background-color:#b5eaa8"> {{track.status}} </span>
-          <span *ngIf="track.status != 'Good'" style="background-color:#f1beba"> {{track.status}} </span>
+
+          <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Best'" style="background-color:#c4b8f5"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
+          <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Good'" style="background-color:#b5eaa8"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
+          <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Bad'" style="background-color:#efac58"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
+          <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Worst'" style="background-color:#e45b50"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
         </td>
 
         <!-- b5eaa8 -->
