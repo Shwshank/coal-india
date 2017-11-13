@@ -23,6 +23,7 @@ export class ProjectService {
   emitPSUArray : EventEmitter<any> = new EventEmitter<any>();
   emitSummaryData : EventEmitter<any> = new EventEmitter<any>();
   emitUserLogin : EventEmitter<any> = new EventEmitter<any>();
+  emitContractMsg : EventEmitter<any> = new EventEmitter<any>();
 
   trackerData: any;
   PSUData: any;
@@ -87,8 +88,8 @@ export class ProjectService {
     this.emitContractData.emit(data);
   }
 
-  tracker(data) {
-    this.emitTrackerData.emit(data);
+  tracker(data,graph) {
+    this.emitTrackerData.emit({'data':data, 'graph':graph});
   }
 
   getContract(data) {
@@ -103,9 +104,39 @@ export class ProjectService {
     });
   }
 
+  checkUploadedContracts(file) {
+    this.APIService.CheckUploadedContracts(file).subscribe((res)=>{
+      console.log(res);
+      if(res){
+        if(res.success) {
+          console.log(res.status);
+          this.emitContractMsg.emit(res.status);
+        }
+      } else {}
+    }, (err)=>{
+      console.log(err);
+      this.toast('Something went wrong. Please check logs ','Error!');
+    });
+  }
+
+  checkUploadedTracker(file) {
+    this.APIService.CheckUploadedTracker(file).subscribe((res)=>{
+      console.log(res);
+      if(res){
+        if(res.success) {
+          console.log(res.status);
+          this.emitContractMsg.emit(res.status);
+        }
+      } else {}
+    }, (err)=>{
+      console.log(err);
+      this.toast('Something went wrong. Please check logs ','Error!');
+    });
+  }
+
   updateContract(data) {
     this.APIService.UpdateContract(data).subscribe((res)=>{
-      // console.log(res);
+      console.log(res);
       if(res){
         this.getContract(1);
         this.toast('Contract updated','Success!');
@@ -119,7 +150,7 @@ export class ProjectService {
   updateTracker(data) {
     this.APIService.UpdateTracker(data).subscribe((res)=>{
       if(res) {
-      // console.log(res);
+      console.log(res);
 
       // update Daily tracker data data
       let formData = new FormData();
@@ -136,8 +167,8 @@ export class ProjectService {
   getTrackerByDate(data) {
     this.APIService.GetTrackerByDate(data).subscribe((res)=>{
       if(res.success) {
-        // console.log(res.data);
-        this.tracker(res.data);
+        // console.log(res);
+        this.tracker(res.data,res.stacked_area_list);
       } else {}
     }, (err)=>{
       console.log(err);

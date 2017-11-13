@@ -14,22 +14,21 @@ import { ViewContainerRef } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   formData = new FormData();
-  // passwordmsg: any= ' * asd';
 
   constructor(private route: ActivatedRoute, private router: Router,
     private ProjectService: ProjectService, public toastr: ToastsManager, vcr: ViewContainerRef) {
 
-    // this.toastr.setRootViewContainerRef(vcr);
-    // this.ProjectService.emitToastMsg.subscribe((res)=>{
-    //
-    // });
+    let temp = localStorage.getItem('tracker_graph_current');
+    temp = JSON.parse(temp);
+    localStorage.setItem('tracker_graph_dis',JSON.stringify(temp));
+
 
     // Get Contract related data nad store in local storage
     // ------------------------------------------------------- starts here
     this.ProjectService.emitContractData.subscribe((res) =>{
       // console.log(res);
       localStorage.setItem('contracts',JSON.stringify(res));
-      
+
     });
     // ------------------------------------------------------- end here
 
@@ -37,8 +36,9 @@ export class HomeComponent implements OnInit {
     // Get tracker related data nad store in local storage
     // ------------------------------------------------------- starts here
     this.ProjectService.emitTrackerData.subscribe((res) =>{
-      localStorage.setItem('tracker',JSON.stringify(res));
-      console.log('1');
+      localStorage.setItem('tracker',JSON.stringify(res.data));
+      localStorage.setItem('tracker_graph_current',JSON.stringify(res.graph));
+
       // console.log(res);
     });
     // -------------------------------------------------------ends here
@@ -56,7 +56,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.showSuccess('1','1');
     // Get Contract api
     this.ProjectService.getContract(1);
 

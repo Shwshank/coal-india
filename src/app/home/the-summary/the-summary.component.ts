@@ -21,10 +21,12 @@ export class TheSummaryComponent implements OnInit {
   }
 
   psuSummary(id, name) {
+
+    localStorage.setItem('summaryFlag','1');
     this.psu = " - "+ name
-    // console.log(id);
     this.router.navigate(['home/summary/psusummary'],
         {queryParams: {psu_id: id}});
+
   }
 
 }

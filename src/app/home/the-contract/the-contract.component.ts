@@ -16,7 +16,7 @@ export class TheContractComponent implements OnInit {
   contractFlag: any;
   display = false;
   formData: any;
-  files: any
+  files: any;
 
   constructor(private ProjectService: ProjectService) {
     this.contractFlag = localStorage.getItem('contractFlag');
@@ -40,7 +40,7 @@ export class TheContractComponent implements OnInit {
 
     }
   }
-
+  
   ngOnInit() {
   }
 

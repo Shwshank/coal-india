@@ -1,23 +1,35 @@
-<div class="box-radius" style="">
-  <div class="row  justify-content-md-center" >
-    <div class="col-6 text-center" >
-     <b> <span style="background-color:#FFCA2B" > &nbsp; {{data1}} &nbsp; </span><br>
-      Communicated <br> </b>
-    </div>
-    <div class="col-6  text-center" >
-      <b> <span style="background-color:#FFCA2B" > &nbsp; {{data2}} - {{data3}}%  &nbsp;</span><br>
-      SLA Break <br> </b>
-    </div>
+<div  class="box-radius text-center">
+  <div class="text-center"  style="height:1.9rem; width:100%; color: white; background-color: #525252; font-size:1.5rem">
+    Grade Slippage
+  </div>
+  <br>
+  <div class="row justify-content-md-center" style="height:450px;" >
+    <div class="col-12" style="width:400px; margin-top:0px">
 
-    <div class="col-12" >
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated  bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [style.width.%]='data3'></div>
-      </div>
-
-    <div class="text-center"  style="height:1.5rem; width:100%; color: white; background-color: #525252; font-size:1.1rem "  >Results Communicated vs SLA break</div>
-
+      <iframe src="http://192.168.15.237:4400/#/d3-sun-brust" scrolling="no" height="280" frameborder="0" style=" overflow-x:hidden !important; overflow-y:hidden !important; "></iframe>
     </div>
 
+    <div class="col-4" style="height:150px;  margin:auto; background-color: #6baed6; border-radius:15px; padding:0 !important; margin-right:0 !important"  >
+    <b> Below </b> <br> <b style="font-size: 1.4rem" > {{dd1}} &nbsp; {{dp1}}% </b> <br> <br>
+
+    <span style="background-color: #5dea45; border-radius:15px" > &nbsp; -3 ^ : {{data1}} : {{p1}}%  &nbsp;</span> <br>
+    <span style="background-color: #aee879; border-radius:15px" > &nbsp; {{label2}} : {{data2}} : {{p2}}%  &nbsp; </span> <br>
+    <span style="background-color: #e1efa9; border-radius:15px" > &nbsp; {{label3}} : {{data3}} : {{p3}}%  &nbsp; </span>
+    </div>
+
+    <div class="col-2" style="height:100px;  margin:auto; background-color: #9ecae1; border-radius:15px; padding:0 !important;" >
+    <b> Same </b> <br> <b style="font-size: 1.4rem" > {{dd2}} &nbsp; {{dp2}}% </b> <br>
+
+    <!-- <span style="background-color: white;" > &nbsp;  {{data4}} &nbsp;  <br> &nbsp;  {{p4}}%  &nbsp; </span> -->
+    </div>
+
+    <div class="col-4" style="height:150px;  margin:auto; background-color: #c6dbef; border-radius:15px; padding:0 !important; margin-left:0 !important" >
+    <b> Above </b> <br> <b style="font-size: 1.4rem" > {{dd3}} &nbsp; {{dp3}}% </b> <br> <br>
+
+    <span style="background-color: #fbebeb; border-radius:15px" > &nbsp; {{label5}} : {{data5}} : {{p5}}%  &nbsp;</span> <br>
+    <span style="background-color: #efc9c9; border-radius:15px" > &nbsp; {{label6}} : {{data6}} : {{p6}}%  &nbsp; </span> <br>
+    <span style="background-color: #ff9090; border-radius:15px" > &nbsp; 3 ^ : {{data7}} : {{p7}}%  &nbsp; </span>
+    </div>
 
   </div>
 </div>

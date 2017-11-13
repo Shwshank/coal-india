@@ -22,6 +22,7 @@ export class TheTableComponent implements OnInit {
 
   constructor(private ProjectService: ProjectService) {
     this.trackerFlag = localStorage.getItem('trackerFlag');
+
     if(this.trackerFlag == 0) {
       window.location.reload();
       localStorage.setItem('trackerFlag','1');
@@ -34,7 +35,8 @@ export class TheTableComponent implements OnInit {
       // console.log(this.tracker);
       this.display = true;
       this.ProjectService.emitTrackerData.subscribe((res) =>{
-        localStorage.setItem('tracker',JSON.stringify(res));
+        localStorage.setItem('tracker',JSON.stringify(res.data));
+        localStorage.setItem('tracker_graph_current',JSON.stringify(res.graph));
         // console.log(res);
         if(this.searchRefreshflag){
           window.location.reload();

@@ -14,10 +14,12 @@ import { Sm3Component } from './home/the-summary/summary-content/sm3/sm3.compone
 import { Sm4Component } from './home/the-summary/summary-content/sm4/sm4.component';
 import { Sm5Component } from './home/the-summary/summary-content/sm5/sm5.component';
 import { LoginComponent } from './login/login.component';
+import { D3SunBrustComponent } from './home/the-summary/summary-content/d3-sun-brust/d3-sun-brust.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo:'/login' },
   { path: 'login', component: LoginComponent },
+  { path: 'd3-sun-brust', component: D3SunBrustComponent },
   { path: 'home', component: HomeComponent,
     children: [
       { path: '', pathMatch: 'full', component: InfoPageComponent, canActivate: [AuthGuard]},

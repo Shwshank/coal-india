@@ -4,13 +4,21 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable()
 export class APIService {
 
-  // projectURL: string = 'http://192.168.15.221:8000';
-  projectURL: string = 'http://qcitech.org:8081';
+  projectURL: string = 'http://192.168.15.221:8000';
+  // projectURL: string = 'http://qcitech.org:8081';
 
   constructor( private http: Http, ) {}
 
   Login(data) {
     return this.http.post(this.projectURL+'/login',data).map(res=>res.json());
+  }
+
+  CheckUploadedContracts(file) {
+    return this.http.post(this.projectURL+'/checkuploadcontracts',file).map(res=>res.json());
+  }
+
+  CheckUploadedTracker(file) {
+    return this.http.post(this.projectURL+'/checkuploadprocesstracker',file).map(res=>res.json());
   }
 
   GetUpdatedContract(data) {
@@ -24,7 +32,7 @@ export class APIService {
 
   UpdateContract(data) {
     // console.log(data);
-    return this.http.post(this.projectURL+'/uploadcontracts',data);
+    return this.http.post(this.projectURL+'/uploadcontracts',data).map(res=>res.json());
   }
 
   UpdateTracker(data) {
