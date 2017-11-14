@@ -49,4 +49,8 @@ export class APIService {
     return this.http.post(this.projectURL+'/savecontractdays',data).map(res=>res.json());
   }
 
+  UploadHistory() {
+    return this.http.get(this.projectURL+'/getuploadhistory').map(res=>res.json());
+  }
+
 }

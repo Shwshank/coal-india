@@ -2,15 +2,15 @@
 
   <div class="row " style="padding-top:10px" >
     <div class=" col-md-6 text-left">
-      <h2 style="margin-bottom:0px; ">Tracker  <span style="font-size: 1.0rem" > {{cachemonth}} </span> </h2>
-      <p style="color:grey"> <i> last updated : 12/12/17 </i></p>
+      <h2 style="margin-bottom:0px; ">Tracker  <span style="font-size: 1.2rem" > {{c_month}} </span> </h2>
+      <p style="color:grey"> <i> last updated : {{last_update}} </i></p>
       <br>
     </div>
 
     <div class=" col-md-6 " style="float:right" >
       <div class="form-group row">
         <label for="example-datetime-local-input" class="col-2 col-form-label text-center">Select month</label>
-        <div class="col-4">
+        <div class="col-5">
           <input class="form-control" type="month" id="example-datetime-local-input"  [(ngModel)]='date2' format="dd/MM/yyyy">
         </div>
         <div class="3">
@@ -137,7 +137,7 @@
             <td>{{track.d3}}</td>
             <td>{{track.lifted}}</td>
             <td class="">
-              <input style="width: 28px" type="text" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
+              <input style="width: 28px" type="number" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
             </td>
             <td>{{parseint(track.needed/track.d8)}}</td>
 

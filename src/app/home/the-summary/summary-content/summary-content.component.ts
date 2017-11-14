@@ -18,6 +18,8 @@ export class SummaryContentComponent implements OnInit {
       .subscribe(params => {
           this.psu_id = params.psu_id;
           // console.log(this.psu_id);
+          localStorage.setItem('not_All_Summary','1');
+          this.ProjectService.emitCSummary.emit(this.psu_id);
 
           this.ProjectService.allPSUData(this.psu_id);
       });

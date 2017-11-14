@@ -9,6 +9,7 @@ import './allscript.js';
   templateUrl: './the-table.component.html',
   styleUrls: ['./the-table.component.css']
 })
+
 export class TheTableComponent implements OnInit {
   tracker : any;
   date1: any;
@@ -19,6 +20,8 @@ export class TheTableComponent implements OnInit {
   month: any;
   searchRefreshflag = false;
   cachemonth : any;
+  c_month: any;
+  last_update: any;
 
   constructor(private ProjectService: ProjectService) {
     this.trackerFlag = localStorage.getItem('trackerFlag');
@@ -47,17 +50,30 @@ export class TheTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.last_update = JSON.parse(localStorage.getItem('last_update_tracker'));
     let d = new Date();
     let m = d.getMonth();
     m += 1;
     let y = d.getFullYear();
     this.month = y+'-'+m;
     // console.log(this.month);
+    let temp = localStorage.getItem('month_flag');
+
+    if(temp == '1') {
+        this.c_month = localStorage.getItem('current_month');
+        localStorage.setItem('month_flag','0');
+
+    } else {
+      this.c_month = this.month;
+    }
+
     localStorage.setItem('month',this.month);
 
+
     this.formData.append('monthdate', this.month);
-    this.ProjectService.getTrackerByDate(this.formData);
+    this.ProjectService.getTrackerByDate(this.formData, this.month);
     // this.ProjectService.updateTracker();
+
   }
 
   ngOnDestroy() {
@@ -75,8 +91,10 @@ export class TheTableComponent implements OnInit {
     let formData1 = new FormData();
     this.month = this.date2
     formData1.append('monthdate', this.month);
+    localStorage.setItem('month_flag','1');
+    localStorage.setItem('current_month',this.month);
     // console.log(this.date2);
-    this.ProjectService.getTrackerByDate(formData1);
+    this.ProjectService.getTrackerByDate(formData1, this.month);
     //this.ProjectService.getContractByDate(formData);
     this.searchRefreshflag = true;
   }

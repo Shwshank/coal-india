@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
     let y = d.getFullYear();
     let month = y+'-'+m;
     this.formData.append('monthdate', month);
-    this.ProjectService.getTrackerByDate(this.formData);
+    this.ProjectService.getTrackerByDate(this.formData, month);
 
     // Get PSU Summary
     this.ProjectService.getPsuSummary(1);

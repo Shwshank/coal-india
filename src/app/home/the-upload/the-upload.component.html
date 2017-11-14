@@ -16,7 +16,7 @@
         <i class="fa fa-file-text-o fa-5x"></i>
       </span> <br><br>
       <div class="fileinput fileinput-new" data-provides="fileinput" >
-          <span class="btn  btn-file btn-primary" style="width:100% !important"><span>Updated contract : </span><input type="file" (change)="updateContract($event);" accept=".csv"/></span>
+          <span class="btn  btn-file btn-primary" style="width:100% !important"><span>Update contract : </span><input type="file" (change)="updateContract($event);" accept=".csv"/></span>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
         <i class="fa fa-line-chart fa-5x"></i>
       </span><br><br>
       <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%">
-          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Updated daily entry : </span><input type="file" (change)="updateTracker($event);"  accept=".csv"/></span>
+          <span class="btn  btn-file  btn-primary" style="width:100% !important"><span>Update tracker : </span><input type="file" (change)="updateTracker($event);"  accept=".csv"/></span>
       </div>
     </div>
 
@@ -45,20 +45,22 @@
               <tr>
                 <th  class="text-center">S.no.</th>
                 <th  class="text-center">File name</th>
-                <th  class="text-center">Uploader</th>
-                <th  class="text-center">Download</th>
+                <th  class="text-center">Time</th>
+                <th  class="text-center">Summary</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>Contract.csv</td>
-                <td>Tom Eleven</td>
+              <tr *ngFor="let contract of contractHistory  ;  let i = index ">
+                <td>{{i+1}}.</td>
+                <td>{{contract.file_original_name}}</td>
+                <td>{{contract.time}}</td>
                 <td style="color:#0275d8">
+                    <i class="fa fa-share-square-o" (click)='pSummary(contract.status)' aria-hidden="true"></i>
 
-                  <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
+                  <!-- <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
                      <i class="fa fa-download" aria-hidden="true"></i>
-                  </a>
+                  </a> -->
+
                 </td>
 
               </tr>
@@ -73,7 +75,7 @@
     <div class="col-md-6 text-center">
       <div class="card">
         <div class="card-header">
-          <h5>Daly Entry Tracker</h5>
+          <h5>Daily Tracker</h5>
         </div>
         <div class="card-block" style="height: 350px; overflow-y:auto" >
 
@@ -82,20 +84,21 @@
               <tr>
                 <th  class="text-center">S.no.</th>
                 <th  class="text-center">File name</th>
-                <th  class="text-center">Uploader</th>
-                <th  class="text-center">Download</th>
+                <th  class="text-center">Time</th>
+                <th  class="text-center">Summary</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>Contract.csv</td>
-                <td>Tom Eleven</td>
+              <tr *ngFor="let tracker of trackerHistory  ;  let i = index ">
+                <td>{{i+1}}.</td>
+                <td>{{tracker.file_original_name}}</td>
+                <td>{{tracker.time}}</td>
                 <td style="color:#0275d8">
+                    <i class="fa fa-share-square-o" (click)='pSummary(tracker.status)' ></i>
 
-                  <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Process%20Tracker%20Template.csv")'>
+                  <!-- <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
                      <i class="fa fa-download" aria-hidden="true"></i>
-                  </a>
+                  </a> -->
 
                 </td>
 
@@ -259,7 +262,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
-        <button type="button" class="btn btn-success" (click)='proceed()'   data-dismiss="modal"  >Proceed with update </button>
+        <div *ngIf='updateFlag' >
+          <button  type="button" class="btn btn-success" (click)='proceed()'   data-dismiss="modal"  >Proceed with update </button>
+        </div>
+
       </div>
     </div>
   </div>

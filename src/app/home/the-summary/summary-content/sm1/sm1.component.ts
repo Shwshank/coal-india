@@ -24,7 +24,7 @@ export class Sm1Component implements OnInit {
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitPSUData.subscribe((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
 
       this.data1 = res.data[res.id].vol[0][1];
       this.data2 = res.data[res.id].vol[1][1];

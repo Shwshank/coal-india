@@ -24,6 +24,8 @@ export class ProjectService {
   emitSummaryData : EventEmitter<any> = new EventEmitter<any>();
   emitUserLogin : EventEmitter<any> = new EventEmitter<any>();
   emitContractMsg : EventEmitter<any> = new EventEmitter<any>();
+  emitCSummary : EventEmitter<any> = new EventEmitter<any>();
+  emitUploadHistory : EventEmitter<any> = new EventEmitter<any>();
 
   trackerData: any;
   PSUData: any;
@@ -44,7 +46,9 @@ export class ProjectService {
       console.log(res);
       if(res.success) {
         localStorage.setItem('login','true');
+        localStorage.setItem('not_All_Summary','0');
         this.emitUserLogin.emit('user');
+
       } else {
         // this.toast('Invalid username or password ', 'Error!');
       }
@@ -97,6 +101,7 @@ export class ProjectService {
     this.APIService.GetUpdatedContract(data).subscribe((res)=>{
       if(res.success) {
         this.contract(res.contracts_data);
+        localStorage.setItem('last_update_contract',JSON.stringify(res.last_updated));
       } else {}
     }, (err)=>{
       console.log(err);
@@ -155,7 +160,7 @@ export class ProjectService {
       // update Daily tracker data data
       let formData = new FormData();
       formData.append('monthdate', this.month);
-      this.getTrackerByDate(formData);
+      this.getTrackerByDate(formData, this.month);
       this.toast('Tracker updated','Success!');
     } else{}
     }, (err)=>{
@@ -164,11 +169,24 @@ export class ProjectService {
     });
   }
 
-  getTrackerByDate(data) {
+  uploadHistory() {
+    this.APIService.UploadHistory().subscribe((res)=>{
+      if(res.success) {
+        console.log(res);
+        this.emitUploadHistory.emit({'contract':res.cu_history, 'tracker':res.ptu_history});
+      } else {}
+    }, (err)=>{
+      console.log(err);
+      this.toast('Something went wrong. Please check logs ','Error!');
+    }) ;
+  }
+
+  getTrackerByDate(data, month) {
     this.APIService.GetTrackerByDate(data).subscribe((res)=>{
       if(res.success) {
         // console.log(res);
         this.tracker(res.data,res.stacked_area_list);
+        localStorage.setItem('last_update_tracker',JSON.stringify(res.last_updated));
       } else {}
     }, (err)=>{
       console.log(err);
@@ -197,7 +215,7 @@ export class ProjectService {
 
         let formData = new FormData();
         formData.append('monthdate', this.month);
-        this.getTrackerByDate(formData);
+        this.getTrackerByDate(formData, this.month);
         this.toast('Please refresh','Data Updated!');
       } else {}
     },(err)=>{

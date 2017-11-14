@@ -14,6 +14,9 @@ export class TheUploadComponent implements OnInit {
   updatedData: any= {'value2':[],'value3':[],'value4':[],'value5':[],'value6':[],'value7':[],'value8':[]};
   display: any= false;
   flag = 0;
+  contractHistory: any;
+  trackerHistory: any;
+  updateFlag: any;
 
   constructor(private ProjectService: ProjectService) {
     this.ProjectService.emitContractMsg.subscribe((res)=>{
@@ -21,12 +24,23 @@ export class TheUploadComponent implements OnInit {
       this.display= true;
       $("#exampleModal1").modal('show');
     });
-    }
+
+    this.ProjectService.emitUploadHistory.subscribe((res)=>{
+      this.contractHistory = res.contract;
+      this.trackerHistory = res.tracker;
+
+      console.log(this.contractHistory);
+      console.log(this.trackerHistory);
+    });
+
+  }
 
   ngOnInit() {
+    this.ProjectService.uploadHistory();
   }
 
   updateContract($event) {
+    this.updateFlag = true;
     console.log('1');
     this.flag=1;
     this.formData.delete('file');
@@ -42,6 +56,7 @@ export class TheUploadComponent implements OnInit {
   }
 
   updateTracker($event) {
+    this.updateFlag = true;
     console.log('2');
     this.flag=2;
     this.formData.delete('file');
@@ -71,6 +86,11 @@ export class TheUploadComponent implements OnInit {
     // window.location.reload();
   }
 
-  
+  pSummary(data) {
+    this.updateFlag = false;
+    this.updatedData = data;
+    this.display= true;
+    $("#exampleModal1").modal('show');
+  }
 
 }
