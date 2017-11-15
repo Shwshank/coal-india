@@ -46,7 +46,7 @@ export class ProjectService {
     this.APIService.Login(data).subscribe((res)=>{
       console.log(res);
       if(res.success) {
-        localStorage.setItem('login','true');
+        localStorage.setItem('login','true1');
         localStorage.setItem('not_All_Summary','0');
         this.emitUserLogin.emit('user');
 

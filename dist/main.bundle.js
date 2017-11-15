@@ -2071,7 +2071,7 @@ var ProjectService = (function () {
         this.APIService.Login(data).subscribe(function (res) {
             console.log(res);
             if (res.success) {
-                localStorage.setItem('login', 'true');
+                localStorage.setItem('login', 'true1');
                 localStorage.setItem('not_All_Summary', '0');
                 _this.emitUserLogin.emit('user');
             }
@@ -2302,7 +2302,7 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function () {
-        if (localStorage.getItem('login') === 'true') {
+        if (localStorage.getItem('login') === 'true1') {
             return true;
         }
         this.router.navigate(['/']);
