@@ -101,16 +101,14 @@ export class TheTableComponent implements OnInit {
 
   calStatus(lifted,needed,days) {
     let act = needed/days;
-    let diff = lifted - act;
-    let per20 = .2;
-    let per10 = .1;
-    if(diff>=(act*per20)) {
-      return "Best";
-    } else if(diff>(-1*act*per10)) {
-      return 'Good';
-    } else if(diff>(-1*act*per20)) {
-      return "Bad";
+    let diff = act - lifted;
+    let per25 = .25;
+
+    if(lifted>(act)) {
+      return "Beyond";
+    } else if(diff<(act*per25)) {
+      return 'Okay';
     }
-    return "Worst";
+    return "Below";
   }
 }

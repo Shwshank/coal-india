@@ -6,3 +6,15 @@
   margin: 10px;
   /*color: #469846;*/
 }
+.text-style-g{
+  font-size: 1.4rem;
+  background-color: #469846;
+  color: white;
+  border-radius: 15px;
+}
+.text-style-r{
+  font-size: 1.4rem;
+  background-color: #d9534f;
+  color: white;
+  border-radius: 15px;
+}

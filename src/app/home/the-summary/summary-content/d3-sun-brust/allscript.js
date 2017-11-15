@@ -12,7 +12,10 @@ var x = d3.scale.linear()
 var y = d3.scale.sqrt()
     .range([0, radius]);
 
-var color = d3.scale.category20c();
+// var color = d3.scale.category20c();
+
+var color = d3.scale.ordinal()
+.range(["#b9b9b9", "#469846",  "#9ecae1", "#d9534f",]);
 
 var partition = d3.layout.partition()
     .value(function(d) { return d.size; });
@@ -26,7 +29,7 @@ var arc = d3.svg.arc()
 var svg = d3.select("#con1").append("svg")
     .attr("width", width)
     .attr("height", height)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
 
 var sun_data = localStorage.getItem('sunbrust');

@@ -1,15 +1,26 @@
 <div class="container"  style=" overflow-x:auto;overflow-y:hidden">
 
-  <div class="row " style="padding:30px" >
+  <div class="row " style="padding:30px; padding-bottom:0" >
 
     <div class=" col-md-6 text-left">
       <h2 style="margin-bottom:0px; ">Uploads</h2>
     </div>
-    <div class="col-md-6 ">
+    <div class="col-md-6 text-right"  >
+
+      <button type="button" name="button" class="btn btn-primary"
+      (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
+        Sample contract <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      </button>
+
+      <button type="button" name="button" class="btn btn-primary"
+      (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Process%20Tracker%20Template.csv")'>
+        Sample tracker <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      </button>
+
     </div>
   </div>
 
-  <div class="row justify-content-md-center" style="padding:30px" >
+  <div class="row justify-content-md-center" style="padding:30px;  padding-bottom:0" >
 
     <div class=" col-md-6 text-center" style="min-width: 200px; padding:20px;">
       <span class="text-center" style="font-size:2rem">

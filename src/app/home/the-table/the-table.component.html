@@ -38,17 +38,17 @@
   <div class="tab-content" style="height:100%; width:100%; ">
 
     <div class="tab-pane active" id="table1" role="tabpanel">
-      <br><br>
+      <br>
       <table class="stripe row-border order-column" id="example"   cellspacing="0" width="100%"   style="font-size:.8rem !important">
         <thead style="background-color:#dcefff">
           <tr>
 
             <th>Subsidiary</th>
             <th>Location</th>
-            <th>Customer - Plant - Mode</th>
+            <th>Customer</th>
             <th>Lifted</th>
             <th>Days</th>
-            <th>Monthly Remaining</th>
+            <th>Ideal</th>
             <th>Status</th>
             <th>1</th>
             <th>2</th>
@@ -137,16 +137,14 @@
             <td>{{track.d3}}</td>
             <td>{{track.lifted}}</td>
             <td class="">
-              <input style="width: 28px" type="number" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
+              <input style="width: 45px" type="number" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
             </td>
             <td>{{parseint(track.needed/track.d8)}}</td>
 
             <td>
-
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Best'" style="background-color:#c4b8f5"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Good'" style="background-color:#b5eaa8"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Bad'" style="background-color:#efac58"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Worst'" style="background-color:#e45b50"> &nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </span>
+              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Beyond'" style="color:#5f4cad"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </b> </span>
+              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Okay'" style="color:#248c0b"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </b> </span>
+              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Below'" style="color:#ff5722"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp;</b>  </span>
             </td>
 
             <!-- b5eaa8 -->

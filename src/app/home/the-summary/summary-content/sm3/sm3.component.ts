@@ -66,7 +66,7 @@ export class Sm3Component implements OnInit {
            labels: [this.label1,this.label2,this.label3,this.label4],
            datasets: [{
                data : [this.data1,this.data2,this.data3,this.data4],
-               backgroundColor: ['#0275D8','#469846','#8E8E8E','#F0AD4E']
+               backgroundColor: ['#469846','#0275D8','#F0AD4E','#d9534f']
            },
          ]
         },

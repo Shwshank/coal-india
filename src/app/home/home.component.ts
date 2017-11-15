@@ -14,6 +14,9 @@ import { ViewContainerRef } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   formData = new FormData();
+  c_pass: any;
+  pass1: any;
+  pass2: any;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private ProjectService: ProjectService, public toastr: ToastsManager, vcr: ViewContainerRef) {
@@ -21,6 +24,12 @@ export class HomeComponent implements OnInit {
     let temp = localStorage.getItem('tracker_graph_current');
     temp = JSON.parse(temp);
     localStorage.setItem('tracker_graph_dis',JSON.stringify(temp));
+
+    this.ProjectService.emitUpdatePassword.subscribe((res)=>{
+        this.c_pass='';
+        this.pass1='';
+        this.pass2='';
+    });
 
 
     // Get Contract related data nad store in local storage
@@ -80,4 +89,16 @@ export class HomeComponent implements OnInit {
     this.ProjectService.logout();
   }
 
+  updatePassword() {
+
+    if(this.pass1==this.pass2) {
+
+      let formData = new FormData();
+      formData.append('c_pass',this.c_pass);
+      formData.append('pass1',this.pass1);
+      this.ProjectService.updatePassword(formData);
+    } else{
+        this.ProjectService.toast('New passwords dosent match ','Opps!');
+    }
+  }
 }

@@ -39,11 +39,11 @@ export class Sm1Component implements OnInit {
       localStorage.setItem('sunbrust', this.data6);
 
       let summaryFlag = localStorage.getItem('summaryFlag');
-      if(summaryFlag =='1'){
-        localStorage.setItem('summaryFlag','0');
-        window.location.reload();
-
-      }
+      // if(summaryFlag =='1'){
+      //   localStorage.setItem('summaryFlag','0');
+      //   window.location.reload();
+      //
+      // }
 
       if(this.data1 == 0){
         this.display = false;

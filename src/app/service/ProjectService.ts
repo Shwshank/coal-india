@@ -26,6 +26,7 @@ export class ProjectService {
   emitContractMsg : EventEmitter<any> = new EventEmitter<any>();
   emitCSummary : EventEmitter<any> = new EventEmitter<any>();
   emitUploadHistory : EventEmitter<any> = new EventEmitter<any>();
+  emitUpdatePassword : EventEmitter<any> = new EventEmitter<any>();
 
   trackerData: any;
   PSUData: any;
@@ -71,6 +72,19 @@ export class ProjectService {
     this.router.navigate(['./login']);
   }
 
+  updatePassword(data) {
+      this.APIService.UpdatePassword(data).subscribe((res)=>{
+        console.log(res);
+        if(res){
+          this.emitUpdatePassword.emit(res);
+          this.toast(res.message,'Message');
+        } else {}
+      }, (err)=>{
+        console.log(err);
+        this.toast('Something went wrong. Please check logs ','Error!');
+      });
+  }
+
   checkLogin() {
     let login = localStorage.getItem('login');
     if(login === 'true') {
@@ -82,6 +96,12 @@ export class ProjectService {
     let data = localStorage.getItem('summary');
     data = JSON.parse(data);
     this.emitPSUData.emit( {'data': data, 'id': id} );
+    let summaryFlag = localStorage.getItem('summaryFlag');
+    if(summaryFlag =='1'){
+      localStorage.setItem('summaryFlag','0');
+      window.location.reload();
+
+    }
   }
 
   toast(msg1, msg2) {

@@ -40,11 +40,11 @@
         <div class="modal-body" style="height:300px; overflow: auto ">
           <div class="form-group">
             <br>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Current password">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Current password" [(ngModel)]='c_pass' required>
             <br>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="New password">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="New password" [(ngModel)]='pass1'  required>
             <br>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm password">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm password" [(ngModel)]='pass2'  required>
             <br>
             <div style="font-weight:600">{{passwordmsg}}</div>
 
@@ -52,7 +52,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Update password</button>
+          <button type="button" class="btn btn-primary" (click)='updatePassword()' >Update password</button>
         </div>
       </div>
     </div>
