@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.ProjectService.emitTrackerData.subscribe((res) =>{
       localStorage.setItem('tracker',JSON.stringify(res.data));
       localStorage.setItem('tracker_graph_current',JSON.stringify(res.graph));
+      localStorage.setItem('last_date',JSON.stringify(res.last_date));
 
       // console.log(res);
     });

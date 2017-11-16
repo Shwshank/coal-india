@@ -139,12 +139,12 @@
             <td class="">
               <input style="width: 45px" type="number" name=""   [(ngModel)]='track.d8' value={{track.d8}}>
             </td>
-            <td>{{parseint(track.needed/track.d8)}}</td>
+            <td>{{parseint((track.needed*last_date)/track.d8)}}</td>
 
             <td>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Beyond'" style="color:#5f4cad"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </b> </span>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Okay'" style="color:#248c0b"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp; </b> </span>
-              <span *ngIf="calStatus(track.lifted,track.needed,track.d8) == 'Below'" style="color:#ff5722"> <b>&nbsp;{{calStatus(track.lifted,track.needed,track.d8)}}&nbsp;</b>  </span>
+              <span *ngIf="calStatus(track.lifted,(track.needed*last_date),track.d8) == 'Beyond'" style="color:#5f4cad"> <b>&nbsp;{{calStatus(track.lifted,(track.needed*last_date),track.d8)}}&nbsp; </b> </span>
+              <span *ngIf="calStatus(track.lifted,(track.needed*last_date),track.d8) == 'Okay'" style="color:#248c0b"> <b>&nbsp;{{calStatus(track.lifted,(track.needed*last_date),track.d8)}}&nbsp; </b> </span>
+              <span *ngIf="calStatus(track.lifted,(track.needed*last_date),track.d8) == 'Below'" style="color:#ff5722"> <b>&nbsp;{{calStatus(track.lifted,(track.needed*last_date),track.d8)}}&nbsp;</b>  </span>
             </td>
 
             <!-- b5eaa8 -->

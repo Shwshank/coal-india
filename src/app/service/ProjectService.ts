@@ -87,7 +87,7 @@ export class ProjectService {
 
   checkLogin() {
     let login = localStorage.getItem('login');
-    if(login === 'true') {
+    if(login === 'true1') {
       this.router.navigate(['./home']);
     }
   }
@@ -112,8 +112,8 @@ export class ProjectService {
     this.emitContractData.emit(data);
   }
 
-  tracker(data,graph) {
-    this.emitTrackerData.emit({'data':data, 'graph':graph});
+  tracker(data,graph, last_date) {
+    this.emitTrackerData.emit({'data':data, 'graph':graph, 'last_date':last_date});
   }
 
   getContract(data) {
@@ -204,8 +204,8 @@ export class ProjectService {
   getTrackerByDate(data, month) {
     this.APIService.GetTrackerByDate(data).subscribe((res)=>{
       if(res.success) {
-        // console.log(res);
-        this.tracker(res.data,res.stacked_area_list);
+        console.log(res);
+        this.tracker(res.data, res.stacked_area_list, res.last_date);
         localStorage.setItem('last_update_tracker',JSON.stringify(res.last_updated));
       } else {}
     }, (err)=>{

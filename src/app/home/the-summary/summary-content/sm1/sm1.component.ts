@@ -28,7 +28,7 @@ export class Sm1Component implements OnInit {
 
       this.data1 = res.data[res.id].vol[0][1];
       this.data2 = res.data[res.id].vol[1][1];
-      this.data3 = res.data[res.id].vol[1][1];
+      this.data3 = res.data[res.id].vol[2][1];
       this.data4 = res.data[res.id].vol[3][1];
       this.data5 = res.data[res.id].vol[4][1];
 

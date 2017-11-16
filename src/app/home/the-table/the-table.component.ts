@@ -22,6 +22,7 @@ export class TheTableComponent implements OnInit {
   cachemonth : any;
   c_month: any;
   last_update: any;
+  last_date: any;
 
   constructor(private ProjectService: ProjectService) {
     this.trackerFlag = localStorage.getItem('trackerFlag');
@@ -40,6 +41,7 @@ export class TheTableComponent implements OnInit {
       this.ProjectService.emitTrackerData.subscribe((res) =>{
         localStorage.setItem('tracker',JSON.stringify(res.data));
         localStorage.setItem('tracker_graph_current',JSON.stringify(res.graph));
+        localStorage.setItem('last_date',JSON.stringify(res.last_date));
         // console.log(res);
         if(this.searchRefreshflag){
           window.location.reload();
@@ -47,6 +49,8 @@ export class TheTableComponent implements OnInit {
 
       });
     }
+
+    this.last_date = localStorage.getItem('last_date');
   }
 
   ngOnInit() {

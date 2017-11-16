@@ -2,19 +2,19 @@
 
   <div class="row " style="padding:30px; padding-bottom:0" >
 
-    <div class=" col-md-6 text-left">
+    <div class=" col-6 text-left">
       <h2 style="margin-bottom:0px; ">Uploads</h2>
     </div>
-    <div class="col-md-6 text-right"  >
+    <div class="col-6 text-right"  >
 
-      <button type="button" name="button" class="btn btn-primary"
+      <button type="button" name="button" class="btn btn-primary" style="margin-top:5px;"
       (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
         Sample contract <i class="fa fa-cloud-download" aria-hidden="true"></i>
       </button>
 
-      <button type="button" name="button" class="btn btn-primary"
+      <button type="button" name="button" class="btn btn-primary"style="margin-top:5px;"
       (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Process%20Tracker%20Template.csv")'>
-        Sample tracker <i class="fa fa-cloud-download" aria-hidden="true"></i>
+        Sample tracker &nbsp; <i class="fa fa-cloud-download" aria-hidden="true"></i>
       </button>
 
     </div>
@@ -67,7 +67,8 @@
                 <td>{{contract.time}}</td>
                 <td style="color:#0275d8">
                     <i class="fa fa-share-square-o" (click)='pSummary(contract.status)' aria-hidden="true"></i>
-
+                    &nbsp;&nbsp;
+                    <i class="fa fa-download" aria-hidden="true" (click)='openURL(contract.url)'></i>
                   <!-- <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
                      <i class="fa fa-download" aria-hidden="true"></i>
                   </a> -->
@@ -106,7 +107,8 @@
                 <td>{{tracker.time}}</td>
                 <td style="color:#0275d8">
                     <i class="fa fa-share-square-o" (click)='pSummary(tracker.status)' ></i>
-
+                    &nbsp;&nbsp;
+                    <i class="fa fa-download" aria-hidden="true" (click)='openURL(tracker.url)'></i>
                   <!-- <a class="nav-link" (click)='openURL("https://s3.ap-south-1.amazonaws.com/qci-coal-dashboard/Templates/Contract%20Upload%20Template.csv")'>
                      <i class="fa fa-download" aria-hidden="true"></i>
                   </a> -->
